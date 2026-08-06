@@ -1,5 +1,5 @@
 import ContactSection from '@/components/ContactSection';
-import siteData from '@/data/siteData.json';
+import { getSiteConfig } from '@/lib/getSiteConfig';
 
 export const metadata = {
   title: 'Contact Us | Zeenrah Technologies - Hire Developers & Technical Estimates',
@@ -7,7 +7,8 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const faqs = siteData.faqs || [];
+  const config = getSiteConfig();
+  const faqs = config.faqs || [];
 
   return (
     <div style={{ backgroundColor: '#0b0f19' }}>
@@ -68,7 +69,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Contact Form & Details Component */}
-      <ContactSection />
+      <ContactSection siteMeta={config.siteMeta} />
 
       {/* Interactive FAQ Accordion Section */}
       <section style={{ padding: '5.5rem 0', backgroundColor: '#0f172a', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>

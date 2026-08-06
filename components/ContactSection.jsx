@@ -9,6 +9,7 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalDetails, setModalDetails] = useState(null);
+  const [submitError, setSubmitError] = useState('');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -23,6 +24,7 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
 
     try {
       const res = await fetch('/api/contact', {
@@ -33,17 +35,23 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
 
       const data = await res.json();
 
-      if (data.success) {
-        setModalDetails({
-          to: targetEmail,
-          subject: data.details?.subject || `🚀 New Estimation Request: ${formData.name} - ${formData.service}`,
-          sender: `${formData.name} <${formData.email}>`,
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        });
-        setShowModal(true);
+      if (!res.ok || !data.success) {
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
+        return;
       }
+
+      setModalDetails({
+        to: targetEmail,
+        subject: data.details?.subject || `🚀 New Estimation Request: ${formData.name} - ${formData.service}`,
+        sender: `${formData.name} <${formData.email}>`,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        emailSent: data.emailSent,
+        serviceMessage: data.serviceMessage,
+      });
+      setShowModal(true);
     } catch (err) {
       console.error('Error submitting form:', err);
+      setSubmitError('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -300,6 +308,12 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                 />
               </div>
 
+              {submitError && (
+                <p style={{ color: '#f87171', fontSize: '0.9rem', marginBottom: '1rem', fontWeight: '600' }}>
+                  {submitError}
+                </p>
+              )}
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -479,14 +493,16 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                 border: '1px solid rgba(6, 182, 212, 0.3)'
               }}
             >
-              EMAIL SENT SUCCESSFULLY
+              {modalDetails.emailSent ? 'EMAIL SENT SUCCESSFULLY' : 'REQUEST RECEIVED'}
             </div>
 
             <h3 style={{ fontSize: '1.75rem', fontWeight: '900', color: '#ffffff', marginBottom: '0.75rem' }}>
-              Project Estimate Received!
+              {modalDetails.emailSent ? 'Project Estimate Received!' : 'Submission Received!'}
             </h3>
             <p style={{ color: '#cbd5e1', fontSize: '0.975rem', lineHeight: '1.6', marginBottom: '1.75rem' }}>
-              Your email has been dispatched with a custom project subject line to our engineering team. We will review your scope and get back to you within 24 hours.
+              {modalDetails.emailSent
+                ? 'Your email has been dispatched with a custom project subject line to our engineering team. We will review your scope and get back to you within 24 hours.'
+                : 'Your request was saved. If this is the first submission, please check the inbox for our contact email and activate FormSubmit — then try again.'}
             </p>
 
             {/* Email Details Summary Card */}
