@@ -9,7 +9,7 @@
 SITE_TITLE=Zeenrah Technologies | Enterprise Next.js, React & AI Engineering
 META_DESCRIPTION=Zeenrah Technologies is a premier software engineering agency specializing in Next.js 15, React 19, mobile apps, enterprise cloud infrastructure, and AI solutions.
 KEYWORDS=Zeenrah Technologies, Next.js 15, React 19, AI Engineering, Cloud DevOps, iOS Native, Android Native
-CONTACT_EMAIL=523shafqatali@gmail.com
+CONTACT_EMAIL=BC260207222amjad@gmail.com
 CONTACT_PHONE=+1 (800) 555-ZEENRAH
 HQ_ADDRESS=Zeenrah Tech Hub Towers, Suite 400
 OG_SITE_NAME=Zeenrah Technologies
