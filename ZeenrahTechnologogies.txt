@@ -1,0 +1,78 @@
+# ==============================================================================
+# ZEENRAH TECHNOLOGIES - 100% FULL-SITE MASTER CONFIGURATION FILE
+# Edit, add, or delete any line or section in this file to control the entire site live!
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 🌐 GLOBAL SITE METADATA & CONTACT DETAILS
+# ------------------------------------------------------------------------------
+SITE_TITLE=Zeenrah Technologies | Enterprise Next.js, React & AI Engineering
+META_DESCRIPTION=Zeenrah Technologies is a premier software engineering agency specializing in Next.js 15, React 19, mobile apps, enterprise cloud infrastructure, and AI solutions.
+KEYWORDS=Zeenrah Technologies, Next.js 15, React 19, AI Engineering, Cloud DevOps, iOS Native, Android Native
+CONTACT_EMAIL=523shafqatali@gmail.com
+CONTACT_PHONE=+1 (800) 555-ZEENRAH
+HQ_ADDRESS=Zeenrah Tech Hub Towers, Suite 400
+OG_SITE_NAME=Zeenrah Technologies
+FOOTER_TAGLINE=Zeenrah Technologies - A full-service software development agency crafting custom web applications, mobile apps, enterprise cloud systems, and AI-driven platforms.
+
+# ------------------------------------------------------------------------------
+# 📲 SOCIAL MEDIA LINKS
+# ------------------------------------------------------------------------------
+TWITTER_URL=https://twitter.com/zeenrahtechnologies
+LINKEDIN_URL=https://linkedin.com/company/zeenrahtechnologies
+GITHUB_URL=https://github.com/zeenrahtechnologies
+FACEBOOK_URL=https://facebook.com/zeenrahtechnologies
+INSTAGRAM_URL=https://instagram.com/zeenrahtechnologies
+YOUTUBE_URL=https://youtube.com/@zeenrahtechnologies
+
+# ------------------------------------------------------------------------------
+# 🚀 HERO BANNER & LOGOS
+# ------------------------------------------------------------------------------
+HERO_HEADLINE_MAIN=Global Leading
+HERO_HEADLINE_SUB=App Factory
+HERO_ACCENT_TEXT=Powering Unprecedented Growth
+HERO_DESCRIPTION=Discover Excellence in Application Development with Zeenrah Technologies, the Unchallenged Leader in the Industry.
+HERO_CTA_TEXT=CONTACT
+HERO_CTA_LINK=/contact
+HERO_LOGO_IMAGE=/images/aam_clean_logo.jpg
+HERO_BANNER_IMAGE=/images/hero_banner.jpg
+
+# ------------------------------------------------------------------------------
+# 🧩 NAVIGATION TABS
+# ------------------------------------------------------------------------------
+NAVIGATION_JSON=[{"id":"1","label":"HOME","path":"/"},{"id":"2","label":"ABOUT US","path":"/about"},{"id":"3","label":"TECHNOLOGIES","path":"/technologies"},{"id":"4","label":"CAREERS","path":"/careers","hasDropdown":true},{"id":"5","label":"CONTACT US","path":"/contact"}]
+
+# ------------------------------------------------------------------------------
+# ⚡ CORE SERVICES & 3D ICONS
+# ------------------------------------------------------------------------------
+SERVICES_JSON=[{"id":"s1","title":"Web Application Development","desc":"Build responsive, scalable, and SEO-optimized web applications with Next.js 15, React 19, TypeScript, and modern backend architectures.","tags":["Next.js 15","React 19","TypeScript","SSR","Node.js"],"iconImg":"/images/icon_web_dev.jpg"},{"id":"s2","title":"Mobile App Engineering","desc":"Cross-platform mobile applications for iOS and Android built with React Native and native modules for smooth 60fps performance.","tags":["React Native","iOS / Swift","Android / Kotlin","PWA"],"iconImg":"/images/icon_mobile_app.jpg"},{"id":"s3","title":"AI & Machine Learning Solutions","desc":"Integrate intelligent LLM agents, automated data processing, predictive analytics, and RAG pipelines into existing workflows.","tags":["OpenAI / Claude","Python","LangChain","PyTorch"],"iconImg":"/images/icon_ai_brain.jpg"},{"id":"s4","title":"Cloud Computing & DevOps","desc":"Resilient cloud infrastructure setup on AWS/GCP, automated CI/CD pipelines, Docker containerization, and zero-downtime deployments.","tags":["AWS / GCP","Kubernetes","Docker","CI/CD Pipelines"],"iconImg":"/images/icon_cloud_server.jpg"},{"id":"s5","title":"UI/UX Product Design","desc":"Human-centric user interface design, accessible design systems, interactive prototypes, and conversion-focused digital experiences.","tags":["Figma","Design Systems","User Research","Wireframing"],"iconImg":"/images/icon_ui_design.jpg"},{"id":"s6","title":"Dedicated Development Squads","desc":"Scale your engineering capacity instantly with dedicated senior full-stack developers, UI/UX designers, and QA leads.","tags":["Staff Augmentation","Agile Delivery","Scrum","QA Automation"],"iconImg":"/images/icon_squad_team.jpg"}]
+
+# ------------------------------------------------------------------------------
+# 📁 PORTFOLIO & CASE STUDIES
+# ------------------------------------------------------------------------------
+PORTFOLIO_JSON=[{"id":"p1","title":"Global FinTech Wealth Management Dashboard","metric":"⚡ 4.2x Faster Latency","desc":"High-frequency trading and wealth management web application built with Next.js 15 App Router, WebSockets for live ticker streaming, and React 19 concurrent charts.","image":"/images/fintech_dashboard.jpg","tags":["Next.js 15","React 19","WebSockets","Recharts","TypeScript"]},{"id":"p2","title":"AI Diagnostic & Patient Portal System","metric":"🧠 65% Reduced Processing Time","desc":"HIPAA-compliant medical image diagnostic assistant integrating custom LLMs with a responsive doctor dashboard and patient mobile app.","image":"/images/healthtech_ai.jpg","tags":["Python","FastAPI","React Native","OpenAI","PostgreSQL"]},{"id":"p3","title":"Enterprise Omnichannel E-Commerce Suite","metric":"🛍️ $12M+ Annual GMV","desc":"Headless e-commerce platform handling over 50,000 requests per minute with instant page loads, sub-second checkout, and international multi-currency support.","image":"/images/ecommerce_app.jpg","tags":["Next.js","Stripe API","GraphQL","Tailwind","Redis"]},{"id":"p4","title":"IoT Fleet Telematics & Asset Tracker","metric":"📍 5,000+ Vehicles Tracked Live","desc":"Real-time telemetry dashboard and driver mobile app for global logistics firm monitoring fuel efficiency, routes, and automated maintenance alerts.","image":"/images/fleet_telematics.jpg","tags":["React Native","AWS IoT","Node.js","Kafka","Mapbox"]}]
+
+# ------------------------------------------------------------------------------
+# 🛠️ TECH MATRIX & SKILLS
+# ------------------------------------------------------------------------------
+TECHNOLOGIES_JSON=[{"id":"t1","name":"Next.js 15","category":"frontend","icon":"▲","desc":"Server Actions & App Router"},{"id":"t2","name":"React 19","category":"frontend","icon":"⚛️","desc":"Concurrent UI & Hooks"},{"id":"t3","name":"TypeScript","category":"frontend","icon":"📘","desc":"Strict End-to-End Typing"},{"id":"t4","name":"Tailwind CSS","category":"frontend","icon":"🎨","desc":"Utility Design System"},{"id":"t5","name":"Python FastAPI","category":"python","icon":"🐍","desc":"High Performance Async Microservices"},{"id":"t6","name":"Django","category":"python","icon":"🌐","desc":"Full-Stack Enterprise Framework"},{"id":"t7","name":"Flask","category":"python","icon":"⚡","desc":"Lightweight REST APIs"},{"id":"t8","name":"PyTorch / ML","category":"python","icon":"🔥","desc":"Deep Learning & ML Models"},{"id":"t9","name":"Java Spring Boot","category":"java","icon":"☕","desc":"Enterprise Cloud Microservices"},{"id":"t10","name":"Hibernate / JPA","category":"java","icon":"🗄️","desc":"Object-Relational Data Mapping"},{"id":"t11","name":"iOS Native (Swift)","category":"mobile","icon":"🍏","desc":"Native Apple iOS Apps"},{"id":"t12","name":"Android Native (Kotlin)","category":"mobile","icon":"🤖","desc":"Native Android Performance"},{"id":"t13","name":"React Native","category":"mobile","icon":"📱","desc":"Cross-Platform iOS & Android"},{"id":"t14","name":"Flutter","category":"mobile","icon":"🐦","desc":"High Performance Native UI"},{"id":"t15","name":"PostgreSQL","category":"cloud","icon":"🐘","desc":"Relational Data Engine"},{"id":"t16","name":"MongoDB","category":"cloud","icon":"🍃","desc":"NoSQL Document Store"},{"id":"t17","name":"Redis","category":"cloud","icon":"⚡","desc":"In-Memory Caching & Queues"},{"id":"t18","name":"AWS","category":"cloud","icon":"☁️","desc":"EC2, S3, Lambda, CloudFront"},{"id":"t19","name":"Docker","category":"cloud","icon":"🐳","desc":"Containerization & Ops"},{"id":"t20","name":"Kubernetes","category":"cloud","icon":"☸️","desc":"Orchestration & Auto-scaling"},{"id":"t21","name":"OpenAI / LLMs","category":"ai","icon":"🧠","desc":"Custom AI Agents & RAG"},{"id":"t22","name":"LangChain","category":"ai","icon":"🔗","desc":"LLM Orchestration & Chains"}]
+
+# ------------------------------------------------------------------------------
+# 🏆 WHY WORK WITH US
+# ------------------------------------------------------------------------------
+WHY_US_JSON=[{"id":"w1","title":"Top 1% Senior Developers","desc":"Our team consists of veteran Next.js, React, Cloud, and AI engineers who take end-to-end ownership of product quality.","icon":"🏆"},{"id":"w2","title":"Agile & Transparent Sprints","desc":"We operate in transparent 2-week sprints with continuous deployment, regular demo calls, and interactive staging builds.","icon":"⚡"},{"id":"w3","title":"Scalable Architecture & Clean Code","desc":"We build modular codebase structures with thorough documentation, automated unit/E2E test suites, and zero technical debt.","icon":"⚙️"},{"id":"w4","title":"Bank-Grade Security & Compliance","desc":"Full alignment with HIPAA, GDPR, SOC2, and ISO standards to guarantee total data privacy and enterprise compliance.","icon":"🔒"}]
+
+# ------------------------------------------------------------------------------
+# 💬 TESTIMONIALS
+# ------------------------------------------------------------------------------
+TESTIMONIALS_JSON=[{"id":"q1","quote":"Zeenrah Technologies transformed our legacy React platform into a blazing-fast Next.js 15 App Router architecture. Our core web vitals shot up to 99, and user conversion jumped 38% within the first month.","author":"Sarah Jenkins","role":"CTO, FinEdge Global","avatar":"SJ"},{"id":"q2","quote":"The senior engineers at Zeenrah Technologies delivered our complex AI diagnostic tool weeks ahead of schedule. Their attention to security, clean code, and UI design is unmatched in the industry.","author":"Dr. Marcus Vance","role":"Head of Product, MediHealth AI","avatar":"MV"},{"id":"q3","quote":"Working with Zeenrah Technologies feels like having a world-class internal engineering squad. They handled our Black Friday traffic surges without a single hiccup.","author":"Elena Rostova","role":"VP of Digital, CommerceSphere","avatar":"ER"}]
+
+# ------------------------------------------------------------------------------
+# ❓ FREQUENTLY ASKED QUESTIONS (FAQS)
+# ------------------------------------------------------------------------------
+FAQS_JSON=[{"id":"f1","q":"How fast can Zeenrah Technologies kick off a project?","a":"We can typically assign an initial discovery team within 48 hours and launch development sprints within 5-7 business days of signing an NDA and contract."},{"id":"f2","q":"Do you offer dedicated developer teams (Staff Augmentation)?","a":"Yes, we provide senior full-stack Next.js/React developers, UI/UX designers, and DevOps engineers who integrate directly into your Jira/Slack workflow."},{"id":"f3","q":"Which technology stacks do you specialize in?","a":"Our core expertise includes Next.js 15, React 19, TypeScript, Node.js, Python, Java Spring Boot, React Native, AWS, Docker, Kubernetes, and AI/LLM integration."},{"id":"f4","q":"What is your project IP ownership policy?","a":"You own 100% of the source code, custom IP, and design assets upon milestone completion. We sign full IP assignment agreements before work begins."}]
+
+# ------------------------------------------------------------------------------
+# 💼 CAREER JOB OPENINGS
+# ------------------------------------------------------------------------------
+JOBS_JSON=[{"id":"j1","title":"Senior Next.js & React Engineer","type":"Full-Time / Remote","location":"Global (Remote)","desc":"Architect high-performance web applications using Next.js 15, React 19, TypeScript, and server components for enterprise clients."},{"id":"j2","title":"Lead React Native & iOS Engineer","type":"Full-Time / Hybrid","location":"Tech Hub Office / Remote","desc":"Lead the mobile engineering team building cross-platform iOS and Android apps with native bridge modules and smooth 60fps UI."},{"id":"j3","title":"AI & Cloud DevOps Lead","type":"Full-Time / Remote","location":"Global (Remote)","desc":"Design automated CI/CD pipelines, manage Kubernetes infrastructure, and deploy custom LLM RAG pipelines on AWS and GCP."},{"id":"j4","title":"Senior Product Designer (UI/UX)","type":"Full-Time / Remote","location":"Global (Remote)","desc":"Craft intuitive design systems in Figma, conduct user research, and collaborate closely with developers to ship beautiful interfaces."}]
