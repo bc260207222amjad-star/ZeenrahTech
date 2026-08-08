@@ -184,22 +184,39 @@ export default function ServicesSection({ services = [] }) {
                   ))}
                 </div>
 
-                <Link
-                  href="/contact"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    color: 'var(--primary)',
-                    fontWeight: '800',
-                    fontSize: '0.9rem',
-                    textDecoration: 'none',
-                    letterSpacing: '0.04em'
+                <motion.div
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{
+                    duration: 2.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: (index % 3) * 0.2
                   }}
+                  style={{ display: 'inline-block' }}
                 >
-                  <span>EXPLORE SERVICE</span>
-                  <ArrowRight size={16} />
-                </Link>
+                  <Link
+                    href="/contact"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      padding: '0.55rem 1.15rem',
+                      backgroundColor: 'rgba(56, 189, 248, 0.08)',
+                      color: 'var(--primary)',
+                      fontWeight: '800',
+                      fontSize: '0.85rem',
+                      textDecoration: 'none',
+                      letterSpacing: '0.04em',
+                      borderRadius: '50px',
+                      border: '1px solid var(--primary-border)',
+                      boxShadow: '0 2px 12px rgba(56, 189, 248, 0.15)',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    <span>EXPLORE SERVICE</span>
+                    <ArrowRight size={16} />
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
           ))}
