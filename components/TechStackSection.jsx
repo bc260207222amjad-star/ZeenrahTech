@@ -348,41 +348,42 @@ export default function TechStackSection({ technologies = [] }) {
               marginBottom: '1rem',
               display: 'flex',
               justifyContent: 'center',
+              alignItems: 'baseline',
               gap: '0.45em',
               flexWrap: 'wrap',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            {/* 1. Word: Technologies (drops down from above first) */}
+            {/* 1. Word: Technologies */}
             <motion.span
-              initial={{ opacity: 0, y: -25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: EASE_CURVE }}
-              style={{ display: 'inline-block' }}
+              initial={{ opacity: 0, y: -50, filter: 'blur(4px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: 0.1, ease: EASE_CURVE }}
+              style={{ display: 'inline-block', verticalAlign: 'baseline' }}
             >
               Technologies
             </motion.span>
 
-            {/* 2. Word: We (drops down from above second) */}
+            {/* 2. Word: We */}
             <motion.span
-              initial={{ opacity: 0, y: -25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.25, ease: EASE_CURVE }}
-              style={{ display: 'inline-block' }}
+              initial={{ opacity: 0, y: -50, filter: 'blur(4px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: 0.3, ease: EASE_CURVE }}
+              style={{ display: 'inline-block', verticalAlign: 'baseline' }}
             >
               We
             </motion.span>
 
-            {/* 3. Word: Master (drops down from above third) */}
+            {/* 3. Word: Master */}
             <motion.span
-              initial={{ opacity: 0, y: -25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.4, ease: EASE_CURVE }}
+              initial={{ opacity: 0, y: -50, filter: 'blur(4px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: 0.5, ease: EASE_CURVE }}
               className="text-gradient-cyan"
-              style={{ display: 'inline-block' }}
+              style={{ display: 'inline-block', verticalAlign: 'baseline' }}
             >
               Master
             </motion.span>
