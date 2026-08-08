@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import SmartImage from '@/components/SmartImage';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Award,
@@ -452,7 +453,7 @@ export function getDeveloperPerks(engineerRole) {
                   >
                     {/* Image Header with Badge Overlay */}
                     <div style={{ position: 'relative', width: '100%', height: '210px', overflow: 'hidden', backgroundColor: '#0F172A' }}>
-                      <Image
+                      <SmartImage
                         src={p.image}
                         alt={p.title}
                         fill

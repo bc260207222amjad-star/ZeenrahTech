@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import GlobalRouteLoader from '@/components/GlobalRouteLoader';
 import { getSiteConfig } from '@/lib/getSiteConfig';
 import './globals.css';
 
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning className="animate-fade-in" style={{ backgroundColor: 'var(--bg-base)', color: 'var(--text-body)' }}>
+        <GlobalRouteLoader />
         <Header navigation={config.navigation} />
         <main className="main-content" style={{ minHeight: '80vh' }}>{children}</main>
         <Footer siteMeta={config.siteMeta} socialLinks={config.socialLinks} />
