@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Zap, Layers } from 'lucide-react';
@@ -9,7 +9,7 @@ import IosDevVideoBackground from './IosDevVideoBackground';
 // Custom corporate smooth easing curve requested by user
 const EASE_CURVE = [0.22, 1, 0.36, 1];
 
-function EndlessTypewriter({ phrases = ["Leading App", "Enterprise AI", "Mobile Platform", "Cloud Software"] }) {
+const EndlessTypewriter = memo(function EndlessTypewriter({ phrases = ["Leading App", "Enterprise AI", "Mobile Platform", "Cloud Software"] }) {
   const [text, setText] = useState('');
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -43,7 +43,7 @@ function EndlessTypewriter({ phrases = ["Leading App", "Enterprise AI", "Mobile 
   }, [text, isDeleting, phraseIdx, phrases]);
 
   return (
-    <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+    <span style={{ display: 'inline-flex', alignItems: 'center', minHeight: '1.1em', verticalAlign: 'middle' }}>
       <span>{text}</span>
       <span
         style={{
@@ -59,7 +59,7 @@ function EndlessTypewriter({ phrases = ["Leading App", "Enterprise AI", "Mobile 
       />
     </span>
   );
-}
+});
 
 export default function HeroSection({ hero }) {
   return (

@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 
-export default function IosDevVideoBackground() {
+function IosDevVideoBackground() {
   const [currentVideo, setCurrentVideo] = useState(0);
   const videoRefs = useRef([]);
 
@@ -21,11 +21,11 @@ export default function IosDevVideoBackground() {
     videoRefs.current.forEach((video, idx) => {
       if (!video) return;
       if (idx === currentVideo) {
-        video.currentTime = 0;
-        video.play().catch(() => {
-          // If video fails, skip to next
-          handleVideoEnd();
-        });
+        if (video.paused) {
+          video.play().catch(() => {
+            handleVideoEnd();
+          });
+        }
       } else {
         video.pause();
       }
@@ -41,7 +41,11 @@ export default function IosDevVideoBackground() {
         width: '100%',
         height: '100%',
         overflow: 'hidden',
-        zIndex: 0
+        zIndex: 0,
+        transform: 'translateZ(0)',
+        WebkitTransform: 'translateZ(0)',
+        willChange: 'transform',
+        backfaceVisibility: 'hidden'
       }}
     >
       {videos.map((src, idx) => (
@@ -61,7 +65,10 @@ export default function IosDevVideoBackground() {
             objectFit: 'cover',
             opacity: currentVideo === idx ? 0.85 : 0,
             transition: 'opacity 1.2s ease-in-out',
-            zIndex: 1
+            zIndex: 1,
+            transform: 'translateZ(0)',
+            WebkitTransform: 'translateZ(0)',
+            willChange: 'opacity'
           }}
         >
           <source src={src} type="video/mp4" />
@@ -76,10 +83,14 @@ export default function IosDevVideoBackground() {
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(180deg, #00000099 0%, #00000080 50%, #00000099 100%)',
-          zIndex: 2
+          background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%)',
+          zIndex: 2,
+          pointerEvents: 'none'
         }}
       />
     </div>
   );
 }
+
+export default memo(IosDevVideoBackground);
+
