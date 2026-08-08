@@ -173,21 +173,61 @@ export default function HeroSection({ hero }) {
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.7, ease: EASE_CURVE }}
-          style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}
+          style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}
         >
-          <Link href={hero?.ctaLink || '/contact'} className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span>{hero?.ctaText || 'CONTACT US'}</span>
-            <ArrowRight size={18} />
-          </Link>
-          <Link href={hero?.secondaryCtaLink || '/services'} className="btn" style={{
-            background: 'rgba(255, 255, 255, 0.15)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            color: '#FFFFFF'
-          }}>
-            {hero?.secondaryCtaText || 'OUR SERVICES'}
-          </Link>
+          {/* Continuous Growing Pulse for CONTACT US */}
+          <motion.div
+            animate={{ scale: [1, 1.06, 1] }}
+            transition={{
+              duration: 2.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1.4
+            }}
+          >
+            <Link
+              href={hero?.ctaLink || '/contact'}
+              className="btn btn-primary"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                boxShadow: '0 4px 20px rgba(56, 189, 248, 0.45)'
+              }}
+            >
+              <span>{hero?.ctaText || 'CONTACT US'}</span>
+              <ArrowRight size={18} />
+            </Link>
+          </motion.div>
+
+          {/* Continuous Growing Pulse for OUR SERVICES */}
+          <motion.div
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{
+              duration: 2.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1.7
+            }}
+          >
+            <Link
+              href={hero?.secondaryCtaLink || '/services'}
+              className="btn"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.35)',
+                color: '#FFFFFF',
+                boxShadow: '0 4px 15px rgba(255, 255, 255, 0.12)'
+              }}
+            >
+              {hero?.secondaryCtaText || 'OUR SERVICES'}
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* 6. Live Metric Badges (0.85s delay, translateY 15px -> 0) */}
