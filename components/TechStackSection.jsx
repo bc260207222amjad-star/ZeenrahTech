@@ -373,87 +373,83 @@ export default function TechStackSection({ technologies = [] }) {
           </motion.p>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Category Filter Pills with Sliding Layout Indicator */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.4, ease: EASE_CURVE }}
-          style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '3rem' }}
+          style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '3rem' }}
         >
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`tech-tab ${activeCategory === cat.id ? 'active' : ''}`}
-            >
-              {cat.name}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                style={{
+                  position: 'relative',
+                  padding: '0.6rem 1.25rem',
+                  borderRadius: '50px',
+                  fontSize: '0.825rem',
+                  fontWeight: '800',
+                  letterSpacing: '0.04em',
+                  border: '1px solid ' + (isActive ? 'var(--primary)' : 'var(--border-subtle)'),
+                  background: 'transparent',
+                  color: isActive ? '#FFFFFF' : 'var(--text-body)',
+                  cursor: 'pointer',
+                  transition: 'color 0.25s ease, border-color 0.25s ease',
+                  outline: 'none'
+                }}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTechTab"
+                    transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      backgroundColor: 'var(--primary)',
+                      borderRadius: '50px',
+                      boxShadow: '0 4px 18px rgba(56, 189, 248, 0.4)',
+                      zIndex: 0
+                    }}
+                  />
+                )}
+                <span style={{ position: 'relative', zIndex: 1 }}>{cat.name}</span>
+              </button>
+            );
+          })}
         </motion.div>
 
-        {/* Sleek Staggered Fade-Up Grid Cards Transition */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.04
-                }
-              },
-              exit: {
-                opacity: 0,
-                transition: {
-                  staggerChildren: 0.02,
-                  staggerDirection: -1
-                }
-              }
-            }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-              gap: '1.5rem'
-            }}
-          >
-            {filteredTech.map((tech, index) => (
+        {/* Fluid PopLayout Grid Cards Transition */}
+        <motion.div
+          layout
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+            gap: '1.5rem',
+            minHeight: '280px'
+          }}
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredTech.map((tech) => (
               <motion.div
-                key={tech.id || index}
-                variants={{
-                  hidden: {
-                    opacity: 0,
-                    y: 25,
-                    scale: 0.95
-                  },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: {
-                      duration: 0.5,
-                      ease: EASE_CURVE
-                    }
-                  },
-                  exit: {
-                    opacity: 0,
-                    y: -15,
-                    scale: 0.95,
-                    transition: {
-                      duration: 0.3,
-                      ease: EASE_CURVE
-                    }
-                  }
+                key={tech.id || tech.name}
+                layout
+                initial={{ opacity: 0, scale: 0.88, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.88, y: -15 }}
+                transition={{
+                  duration: 0.35,
+                  ease: EASE_CURVE,
+                  layout: { duration: 0.35, ease: EASE_CURVE }
                 }}
                 whileHover={{
                   y: -6,
                   scale: 1.03,
-                  boxShadow: '0 16px 35px rgba(56, 189, 248, 0.18)',
-                  transition: { duration: 0.25, ease: 'easeOut' }
+                  boxShadow: '0 16px 35px rgba(56, 189, 248, 0.2)',
+                  transition: { duration: 0.2, ease: 'easeOut' }
                 }}
                 style={{
                   display: 'flex',
@@ -513,8 +509,8 @@ export default function TechStackSection({ technologies = [] }) {
                 </p>
               </motion.div>
             ))}
-          </motion.div>
-        </AnimatePresence>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
