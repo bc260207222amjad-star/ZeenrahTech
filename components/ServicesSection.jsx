@@ -1,7 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Code2, Smartphone, Cpu, Cloud, Palette, Users, ArrowRight } from 'lucide-react';
+
+const EASE_CURVE = [0.22, 1, 0.36, 1];
 
 function getServiceIcon(title = '', index = 0) {
   const t = title.toLowerCase();
@@ -25,10 +28,15 @@ function getServiceIcon(title = '', index = 0) {
 
 export default function ServicesSection({ services = [] }) {
   return (
-    <section className="stagger-2" style={{ padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+        {/* Section Header with Staggered Scroll Entrance */}
         <div style={{ textAlign: 'center', marginBottom: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: EASE_CURVE }}
             style={{
               display: 'inline-block',
               padding: '0.45rem 1.3rem',
@@ -45,8 +53,13 @@ export default function ServicesSection({ services = [] }) {
             }}
           >
             OUR CORE CAPABILITIES
-          </div>
-          <h2
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
@@ -58,8 +71,13 @@ export default function ServicesSection({ services = [] }) {
             }}
           >
             Enterprise Software Engineering & <span className="text-gradient-cyan">AI Solutions</span>
-          </h2>
-          <p
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: EASE_CURVE }}
             style={{
               fontSize: '1.1rem',
               color: 'var(--text-body)',
@@ -69,15 +87,23 @@ export default function ServicesSection({ services = [] }) {
             }}
           >
             From Next.js web applications to cross-platform mobile apps, cloud DevOps infrastructure, and custom AI integrations — we build resilient software that scales.
-          </p>
+          </motion.p>
         </div>
 
-        {/* 6 Capabilities Grid */}
+        {/* 6 Capabilities Grid with Scroll-Triggered Staggered Animations */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
           {services.map((item, index) => (
-            <div
+            <motion.div
               key={item.id || index}
-              className={`pentaloop-card stagger-${(index % 4) + 1}`}
+              initial={{ opacity: 0, y: 35, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{
+                duration: 0.7,
+                delay: (index % 3) * 0.12,
+                ease: EASE_CURVE
+              }}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -89,7 +115,8 @@ export default function ServicesSection({ services = [] }) {
                 borderRadius: '20px',
                 padding: '2.25rem',
                 border: '1px solid var(--border-card)',
-                boxShadow: 'var(--shadow-card)'
+                boxShadow: 'var(--shadow-card)',
+                cursor: 'pointer'
               }}
             >
               <div>
@@ -105,7 +132,8 @@ export default function ServicesSection({ services = [] }) {
                     justifyContent: 'center',
                     marginBottom: '1.5rem',
                     boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-                    border: '1px solid var(--primary-border)'
+                    border: '1px solid var(--primary-border)',
+                    transition: 'transform 0.3s ease, background-color 0.3s ease'
                   }}
                 >
                   {getServiceIcon(item.title, index)}
@@ -173,11 +201,12 @@ export default function ServicesSection({ services = [] }) {
                   <ArrowRight size={16} />
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
 
