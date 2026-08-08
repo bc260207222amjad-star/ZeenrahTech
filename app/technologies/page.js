@@ -8,16 +8,16 @@ export const metadata = {
 
 export default function TechnologiesPage() {
   return (
-    <div style={{ backgroundColor: '#0b0f19' }}>
+    <div style={{ backgroundColor: 'var(--bg-base)' }}>
       {/* Page Hero Header */}
       <section
         style={{
-          backgroundColor: '#0f172a',
-          backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, transparent 60%)',
-          color: '#ffffff',
+          backgroundColor: 'var(--bg-hero)',
+          backgroundImage: 'var(--gradient-hero-glow)',
+          color: 'var(--text-heading)',
           padding: '5.5rem 0',
           textAlign: 'center',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+          borderBottom: '1px solid var(--border-subtle)'
         }}
       >
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
@@ -25,14 +25,14 @@ export default function TechnologiesPage() {
             style={{
               display: 'inline-block',
               padding: '0.4rem 1.2rem',
-              backgroundColor: 'rgba(99, 102, 241, 0.15)',
-              color: '#06b6d4',
+              backgroundColor: 'var(--primary-light)',
+              color: 'var(--primary)',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               borderRadius: '50px',
               marginBottom: '1.2rem',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
+              border: '1px solid var(--primary-border)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
@@ -44,7 +44,7 @@ export default function TechnologiesPage() {
               fontWeight: '900',
               marginBottom: '1rem',
               letterSpacing: '-0.03em',
-              color: '#ffffff',
+              color: 'var(--text-heading)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
@@ -53,7 +53,7 @@ export default function TechnologiesPage() {
           <p
             style={{
               fontSize: '1.15rem',
-              color: '#94a3b8',
+              color: 'var(--text-muted)',
               maxWidth: '680px',
               margin: '0 auto',
               lineHeight: '1.65',
@@ -69,12 +69,12 @@ export default function TechnologiesPage() {
       <TechStackSection />
 
       {/* Tech Standards */}
-      <section style={{ padding: '5.5rem 0', backgroundColor: '#0f172a' }}>
+      <section style={{ padding: '5.5rem 0', backgroundColor: 'var(--bg-hero)' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: '900', color: '#ffffff', marginBottom: '1rem' }}>
+          <h2 style={{ fontSize: '2.2rem', fontWeight: '900', color: 'var(--text-heading)', marginBottom: '1rem' }}>
             Looking for a Specific Technology Stack?
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
             Our engineering leads adapt quickly to custom tech ecosystems and enterprise legacy codebases.
           </p>
           <Link

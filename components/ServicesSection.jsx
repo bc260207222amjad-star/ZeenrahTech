@@ -1,26 +1,46 @@
 'use client';
 
 import Link from 'next/link';
+import { Code2, Smartphone, Cpu, Cloud, Palette, Users, ArrowRight } from 'lucide-react';
+
+function getServiceIcon(title = '', index = 0) {
+  const t = title.toLowerCase();
+  if (t.includes('web') || t.includes('app development')) return <Code2 size={30} color="var(--primary)" />;
+  if (t.includes('mobile') || t.includes('ios') || t.includes('android')) return <Smartphone size={30} color="#38BDF8" />;
+  if (t.includes('ai') || t.includes('machine learning') || t.includes('intelligence')) return <Cpu size={30} color="#818CF8" />;
+  if (t.includes('cloud') || t.includes('devops') || t.includes('infrastructure')) return <Cloud size={30} color="#34D399" />;
+  if (t.includes('ui') || t.includes('ux') || t.includes('design')) return <Palette size={30} color="#F472B6" />;
+  if (t.includes('squad') || t.includes('team') || t.includes('dedicated')) return <Users size={30} color="#FBBF24" />;
+
+  const icons = [
+    <Code2 size={30} color="var(--primary)" />,
+    <Smartphone size={30} color="#38BDF8" />,
+    <Cpu size={30} color="#818CF8" />,
+    <Cloud size={30} color="#34D399" />,
+    <Palette size={30} color="#F472B6" />,
+    <Users size={30} color="#FBBF24" />
+  ];
+  return icons[index % icons.length];
+}
 
 export default function ServicesSection({ services = [] }) {
-
   return (
-    <section className="stagger-2" style={{ padding: '6rem 0', backgroundColor: '#0b0f19', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+    <section className="stagger-2" style={{ padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div
             style={{
               display: 'inline-block',
               padding: '0.45rem 1.3rem',
-              backgroundColor: 'rgba(99, 102, 241, 0.12)',
-              color: '#06b6d4',
+              backgroundColor: 'var(--primary-light)',
+              color: 'var(--primary)',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
+              border: '1px solid var(--primary-border)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
@@ -30,7 +50,7 @@ export default function ServicesSection({ services = [] }) {
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
-              color: '#ffffff',
+              color: 'var(--text-heading)',
               lineHeight: '1.2',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
@@ -42,7 +62,7 @@ export default function ServicesSection({ services = [] }) {
           <p
             style={{
               fontSize: '1.1rem',
-              color: '#cbd5e1',
+              color: 'var(--text-body)',
               lineHeight: '1.65',
               maxWidth: '720px',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
@@ -63,40 +83,39 @@ export default function ServicesSection({ services = [] }) {
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 height: '100%',
-                backgroundColor: 'rgba(15, 23, 42, 0.65)',
+                backgroundColor: 'var(--bg-card)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 borderRadius: '20px',
                 padding: '2.25rem',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.35)'
+                border: '1px solid var(--border-card)',
+                boxShadow: 'var(--shadow-card)'
               }}
             >
               <div>
-                {/* 3D AI Generated Icon */}
+                {/* Crisp Vector SVG Icon Container */}
                 <div
                   style={{
-                    width: '72px',
-                    height: '72px',
+                    width: '64px',
+                    height: '64px',
                     borderRadius: '16px',
-                    overflow: 'hidden',
+                    backgroundColor: 'rgba(56, 189, 248, 0.08)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     marginBottom: '1.5rem',
-                    boxShadow: '0 8px 25px rgba(99, 102, 241, 0.3)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)'
+                    boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                    border: '1px solid var(--primary-border)'
                   }}
                 >
-                  <img
-                    src={item.iconImg || '/images/icon_web_dev.jpg'}
-                    alt={item.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
+                  {getServiceIcon(item.title, index)}
                 </div>
 
                 <h3
                   style={{
                     fontSize: '1.35rem',
                     fontWeight: '800',
-                    color: '#ffffff',
+                    color: 'var(--text-heading)',
                     marginBottom: '0.85rem',
                     lineHeight: '1.3',
                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
@@ -106,7 +125,7 @@ export default function ServicesSection({ services = [] }) {
                 </h3>
                 <p
                   style={{
-                    color: '#cbd5e1',
+                    color: 'var(--text-body)',
                     fontSize: '0.975rem',
                     lineHeight: '1.65',
                     marginBottom: '1.5rem',
@@ -124,12 +143,12 @@ export default function ServicesSection({ services = [] }) {
                       key={tIdx}
                       style={{
                         padding: '0.35rem 0.85rem',
-                        backgroundColor: 'rgba(99, 102, 241, 0.15)',
-                        color: '#06b6d4',
+                        backgroundColor: 'var(--primary-light)',
+                        color: 'var(--primary)',
                         fontWeight: '700',
                         fontSize: '0.78rem',
                         borderRadius: '50px',
-                        border: '1px solid rgba(99, 102, 241, 0.3)'
+                        border: '1px solid var(--primary-border)'
                       }}
                     >
                       {tag}
@@ -143,14 +162,15 @@ export default function ServicesSection({ services = [] }) {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    color: '#6366f1',
+                    color: 'var(--primary)',
                     fontWeight: '800',
                     fontSize: '0.9rem',
                     textDecoration: 'none',
                     letterSpacing: '0.04em'
                   }}
                 >
-                  EXPLORE SERVICE →
+                  <span>EXPLORE SERVICE</span>
+                  <ArrowRight size={16} />
                 </Link>
               </div>
             </div>
@@ -160,3 +180,4 @@ export default function ServicesSection({ services = [] }) {
     </section>
   );
 }
+

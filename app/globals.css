@@ -1,33 +1,79 @@
-/* Zeenrah Technologies - Cyber Slate & Frosted Glassmorphism Theme */
+/* Zeenrah Technologies - Centralized Design Token Theme System */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --primary-indigo: #6366f1;
-  --primary-cyan: #06b6d4;
-  --primary-violet: #8b5cf6;
-  --primary-blue: #3b82f6;
-  
-  --bg-midnight: #0b0f19;
-  --bg-slate: #0f172a;
-  --bg-card: rgba(15, 23, 42, 0.65);
-  --bg-card-hover: rgba(30, 41, 59, 0.85);
+  /* ═══════════════════════════════════════════════════════════════
+     THEME TOKENS — Change ONLY these values to retheme the site
+     Palette: Slate Off-White · Ice Sky Blue · Muted Blue-Gray · Slate Accent
+     ═══════════════════════════════════════════════════════════════ */
 
-  --text-primary: #ffffff;
-  --text-body: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-light: #f8fafc;
+  /* Primary Accent — Slate Blue Accent */
+  --primary: #475569;
+  --primary-dark: #334155;
+  --primary-light: rgba(71, 85, 105, 0.08);
+  --primary-glow: rgba(71, 85, 105, 0.2);
+  --primary-border: rgba(71, 85, 105, 0.25);
 
-  --border-subtle: rgba(255, 255, 255, 0.12);
-  --border-glow: rgba(99, 102, 241, 0.4);
-  --border-cyan-glow: rgba(6, 182, 212, 0.5);
+  /* Secondary / Accent — Ice Sky Blue & Muted Blue-Gray */
+  --accent: #94A3B8;
+  --accent-muted: #BACCDD;
 
+  /* Backgrounds */
+  --bg-base: #F8FAFC;
+  --bg-alt: #EAEFF5;
+  --bg-card: #FFFFFF;
+  --bg-card-glass: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --bg-input: #F8FAFC;
+  --bg-footer: #0F172A;
+  --bg-hero: #EAEFF5;
+
+  /* Text */
+  --text-heading: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-on-dark: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+
+  /* Borders */
+  --border-subtle: rgba(148, 163, 184, 0.25);
+  --border-card: rgba(148, 163, 184, 0.18);
+  --border-input: rgba(148, 163, 184, 0.35);
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(15, 23, 42, 0.05);
+  --shadow-card-hover: 0 12px 40px rgba(71, 85, 105, 0.12);
+  --shadow-btn: 0 4px 16px rgba(71, 85, 105, 0.25);
+  --shadow-btn-hover: 0 8px 28px rgba(71, 85, 105, 0.38);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #475569 0%, #334155 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #334155 0%, #1E293B 100%);
+  --gradient-accent: linear-gradient(135deg, #38BDF8 0%, #60A5FA 50%, #818CF8 100%);
+  --gradient-hero-glow: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
+  --gradient-text: linear-gradient(135deg, #0F172A 0%, #334155 50%, #475569 100%);
+  --gradient-text-accent: linear-gradient(135deg, #475569 0%, #334155 50%, #0F172A 100%);
+
+  /* Header */
+  --header-bg: rgba(248, 250, 252, 0.8);
+  --header-bg-scrolled: rgba(248, 250, 252, 0.98);
+  --header-border: rgba(148, 163, 184, 0.2);
+  --header-border-scrolled: rgba(148, 163, 184, 0.3);
+
+  /* Modal / Overlay */
+  --bg-overlay: rgba(15, 23, 42, 0.5);
+  --bg-modal: #FFFFFF;
+
+  /* Status (semantic — typically NOT themed) */
+  --status-success: #10b981;
+  --status-star: #fbbf24;
+
+  /* ═══════════════════════════════════════════════════════════════
+     STRUCTURAL TOKENS — Rarely need to change
+     ═══════════════════════════════════════════════════════════════ */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --radius-card: 20px;
-  
-  --shadow-subtle: 0px 15px 35px rgba(0, 0, 0, 0.35);
-  --shadow-hover: 0px 25px 50px rgba(99, 102, 241, 0.25);
-
   --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: all 0.35s var(--ease-apple);
 }
@@ -43,7 +89,7 @@ html, body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: var(--bg-midnight);
+  background-color: var(--bg-base);
   color: var(--text-body);
 }
 
@@ -57,10 +103,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #0b0f19;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(148, 163, 184, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(220, 235, 254, 0.5) 0%, transparent 40%);
   background-attachment: fixed;
 }
 
@@ -70,14 +116,14 @@ body {
   height: 0px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6366f1 0%, #06b6d4 100%);
+  background: var(--gradient-primary);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
+  background: var(--primary);
 }
 
 /* Hide Next.js Dev Error Overlay Badges */
@@ -125,26 +171,26 @@ div[class*="nextjs-portal"] {
 
 /* Gradient Text Utilities */
 .text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #6366f1 100%);
+  background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+  background: var(--gradient-text-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Glassmorphism Frosted Card Effects */
 .pentaloop-card {
-  background: rgba(15, 23, 42, 0.65);
+  background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-card);
   padding: 2.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
   transition: transform 0.35s var(--ease-apple), box-shadow 0.35s var(--ease-apple), border-color 0.35s var(--ease-apple), background-color 0.35s var(--ease-apple);
   position: relative;
   overflow: hidden;
@@ -157,7 +203,7 @@ div[class*="nextjs-portal"] {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+  background: var(--gradient-accent);
   transform: scaleX(0.25);
   transform-origin: left;
   transition: transform 0.35s var(--ease-apple), height 0.35s var(--ease-apple);
@@ -165,9 +211,9 @@ div[class*="nextjs-portal"] {
 
 .pentaloop-card:hover {
   transform: translateY(-8px) scale(1.015);
-  box-shadow: 0 25px 50px rgba(99, 102, 241, 0.25);
-  border-color: rgba(99, 102, 241, 0.4);
-  background: rgba(30, 41, 59, 0.8);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--primary-border);
+  background: var(--bg-card-hover);
 }
 
 .pentaloop-card:hover::after {
@@ -185,11 +231,11 @@ div[class*="nextjs-portal"] {
 
 /* Glassmorphism Container Panel */
 .glass-container {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
   backdrop-filter: blur(32px) saturate(190%);
   -webkit-backdrop-filter: blur(32px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35), inset 0 1.5px 2px rgba(255, 255, 255, 0.5), inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08), inset 0 1.5px 2px rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(0, 0, 0, 0.04);
   border-radius: 32px;
 }
 
@@ -214,15 +260,15 @@ div[class*="nextjs-portal"] {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  background: var(--gradient-primary) !important;
+  color: var(--text-on-primary) !important;
+  box-shadow: var(--shadow-btn);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%) !important;
+  background: var(--gradient-primary-hover) !important;
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.6);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .btn-primary:active {
@@ -230,18 +276,18 @@ div[class*="nextjs-portal"] {
 }
 
 .btn-outline {
-  background: rgba(15, 23, 42, 0.6) !important;
-  border: 1px solid rgba(99, 102, 241, 0.4) !important;
-  color: #f1f5f9 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: var(--bg-card) !important;
+  border: 1px solid var(--primary-border) !important;
+  color: var(--text-heading) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
 .btn-outline:hover {
-  background: rgba(99, 102, 241, 0.15) !important;
-  border-color: #06b6d4 !important;
-  color: #ffffff !important;
+  background: var(--primary-light) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
+  box-shadow: 0 8px 24px var(--primary-glow);
 }
 
 /* Header Nav Links Interactive Hover */
@@ -253,7 +299,7 @@ div[class*="nextjs-portal"] {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #94a3b8;
+  color: var(--text-body);
   text-decoration: none;
   transition: color 0.25s ease, background-color 0.25s ease;
   position: relative;
@@ -261,7 +307,7 @@ div[class*="nextjs-portal"] {
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: var(--primary);
 }
 
 .nav-link::after {
@@ -272,7 +318,7 @@ div[class*="nextjs-portal"] {
   transform: translateX(-50%) scaleX(0);
   width: 60%;
   height: 2px;
-  background: linear-gradient(90deg, #6366f1, #06b6d4);
+  background: var(--gradient-accent);
   border-radius: 2px;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -282,7 +328,7 @@ div[class*="nextjs-portal"] {
 }
 
 .nav-link.active {
-  color: #ffffff !important;
+  color: var(--primary) !important;
   background: transparent !important;
 }
 
@@ -295,9 +341,9 @@ div[class*="nextjs-portal"] {
 .tech-tab {
   padding: 0.65rem 1.5rem;
   border-radius: 50px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-body);
   font-weight: 800;
   font-size: 0.85rem;
   cursor: pointer;
@@ -306,16 +352,16 @@ div[class*="nextjs-portal"] {
 
 .tech-tab:hover {
   transform: translateY(-3px);
-  border-color: #06b6d4;
-  color: #ffffff;
-  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.2);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 6px 18px var(--primary-glow);
 }
 
 .tech-tab.active {
-  background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
-  border-color: #6366f1;
-  color: #ffffff;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45);
+  background: var(--gradient-primary);
+  border-color: var(--primary);
+  color: var(--text-on-primary);
+  box-shadow: var(--shadow-btn);
 }
 
 /* Scroll-to-Top Floating Button */
@@ -326,10 +372,10 @@ div[class*="nextjs-portal"] {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--text-on-primary);
   border: none;
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+  box-shadow: var(--shadow-btn);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -341,7 +387,7 @@ div[class*="nextjs-portal"] {
 
 .scroll-to-top:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 14px 35px rgba(6, 182, 212, 0.65);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 /* Responsive Breakdown Across Screen Sizes */
@@ -363,12 +409,12 @@ div[class*="nextjs-portal"] {
     left: 0;
     width: 100%;
     height: auto !important;
-    background: #0f172a;
+    background: var(--bg-card);
     flex-direction: column;
     padding: 1.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     z-index: 999;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .nav-links.open {

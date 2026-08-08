@@ -44,7 +44,7 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#0b0f19'
+  themeColor: '#F8FAFC'
 };
 
 // Server Component — reads TXT file once and passes data down
@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
   const config = getSiteConfig();
 
   return (
-    <html lang="en" suppressHydrationWarning style={{ backgroundColor: '#0b0f19' }}>
+    <html lang="en" suppressHydrationWarning style={{ backgroundColor: '#F8FAFC' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body suppressHydrationWarning className="animate-fade-in" style={{ backgroundColor: '#0b0f19', color: '#94a3b8' }}>
+      <body suppressHydrationWarning className="animate-fade-in" style={{ backgroundColor: 'var(--bg-base)', color: 'var(--text-body)' }}>
         <Header navigation={config.navigation} />
         <main className="main-content" style={{ minHeight: '80vh' }}>{children}</main>
         <Footer siteMeta={config.siteMeta} socialLinks={config.socialLinks} />

@@ -14,11 +14,7 @@ export async function POST(request) {
     const targetEmail = config.siteMeta?.email || '523shafqatali@gmail.com';
     const subject = `🚀 New Estimation Request: ${name} ${company ? `(${company})` : ''} - ${service || 'General Inquiry'}`;
 
-    const host = request.headers.get('x-forwarded-host') || request.headers.get('host');
-    const proto = request.headers.get('x-forwarded-proto') || 'https';
-    const siteOrigin = host ? `${proto}://${host}` : new URL(request.url).origin;
-
-    // Send via FormSubmit service directly to target email
+    // Send via FormSubmit service directly to target email (523shafqatali@gmail.com)
     let emailSent = false;
     let serviceMessage = '';
 
@@ -28,9 +24,9 @@ export async function POST(request) {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'User-Agent': 'Mozilla/5.0 (compatible; ZeenrahTech/1.0)',
-          'Origin': siteOrigin,
-          'Referer': `${siteOrigin}/contact`,
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',
+          'Origin': 'http://localhost:3000',
+          'Referer': 'http://localhost:3000/'
         },
         body: JSON.stringify({
           _subject: subject,

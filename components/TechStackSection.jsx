@@ -308,22 +308,22 @@ export default function TechStackSection({ technologies = [] }) {
     : technologies.filter(item => item.category === activeCategory);
 
   return (
-    <section style={{ padding: '5.5rem 0', backgroundColor: '#0b0f19', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+    <section style={{ padding: '5.5rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div
             style={{
               display: 'inline-block',
               padding: '0.4rem 1.2rem',
-              backgroundColor: 'rgba(99, 102, 241, 0.12)',
-              color: '#06b6d4',
+              backgroundColor: 'var(--primary-light)',
+              color: 'var(--primary)',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
+              border: '1px solid var(--primary-border)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
@@ -333,7 +333,7 @@ export default function TechStackSection({ technologies = [] }) {
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
-              color: '#ffffff',
+              color: 'var(--text-heading)',
               lineHeight: '1.2',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
@@ -345,7 +345,7 @@ export default function TechStackSection({ technologies = [] }) {
           <p
             style={{
               fontSize: '1.1rem',
-              color: '#cbd5e1',
+              color: 'var(--text-body)',
               lineHeight: '1.65',
               maxWidth: '700px',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
@@ -379,13 +379,13 @@ export default function TechStackSection({ technologies = [] }) {
                 alignItems: 'center',
                 textAlign: 'center',
                 padding: '1.75rem 1.25rem',
-                backgroundColor: 'rgba(15, 23, 42, 0.65)',
+                backgroundColor: 'var(--bg-card)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                borderBottom: '3px solid #6366f1',
+                border: '1px solid var(--border-card)',
+                borderBottom: '3px solid var(--primary)',
                 borderRadius: '16px',
-                boxShadow: '0 10px 25px rgba(0, 0, 0, 0.35)',
+                boxShadow: 'var(--shadow-card)',
                 transition: 'all 0.3s ease'
               }}
             >
@@ -395,9 +395,9 @@ export default function TechStackSection({ technologies = [] }) {
                   width: '60px',
                   height: '60px',
                   borderRadius: '16px',
-                  backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                  backgroundColor: 'var(--bg-card)',
+                  border: '1px solid var(--border-subtle)',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.06), inset 0 1px 0 var(--border-subtle)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -413,7 +413,7 @@ export default function TechStackSection({ technologies = [] }) {
                   fontSize: '1.1rem',
                   fontWeight: '800',
                   marginBottom: '0.35rem',
-                  color: '#ffffff',
+                  color: 'var(--text-heading)',
                   fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
                 }}
               >
@@ -422,7 +422,7 @@ export default function TechStackSection({ technologies = [] }) {
               <p
                 style={{
                   fontSize: '0.825rem',
-                  color: '#94a3b8',
+                  color: 'var(--text-muted)',
                   margin: 0,
                   fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
                 }}

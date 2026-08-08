@@ -1,23 +1,53 @@
+'use client';
+
+import { Award, Zap, Cpu, ShieldCheck } from 'lucide-react';
+
+function getWhyUsIcon(item = {}, index = 0) {
+  const iconStr = String(item.icon || '');
+  const title = String(item.title || '').toLowerCase();
+
+  if (iconStr.includes('🏆') || title.includes('top') || title.includes('senior')) {
+    return <Award size={28} color="var(--primary)" />;
+  }
+  if (iconStr.includes('⚡') || title.includes('agile') || title.includes('sprint')) {
+    return <Zap size={28} color="#38BDF8" />;
+  }
+  if (iconStr.includes('⚙️') || title.includes('scalable') || title.includes('code')) {
+    return <Cpu size={28} color="#818CF8" />;
+  }
+  if (iconStr.includes('🔒') || title.includes('security') || title.includes('compliance')) {
+    return <ShieldCheck size={28} color="#34D399" />;
+  }
+
+  const icons = [
+    <Award size={28} color="var(--primary)" />,
+    <Zap size={28} color="#38BDF8" />,
+    <Cpu size={28} color="#818CF8" />,
+    <ShieldCheck size={28} color="#34D399" />
+  ];
+  return icons[index % icons.length];
+}
+
 export default function WhyChooseUs({ whyUs = [] }) {
   const differentiators = whyUs;
 
   return (
-    <section style={{ padding: '6rem 0', backgroundColor: '#0b0f19', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+    <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div
             style={{
               display: 'inline-block',
               padding: '0.45rem 1.3rem',
-              backgroundColor: 'rgba(99, 102, 241, 0.12)',
-              color: '#06b6d4',
+              backgroundColor: 'var(--primary-light)',
+              color: 'var(--primary)',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
+              border: '1px solid var(--primary-border)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
@@ -27,7 +57,7 @@ export default function WhyChooseUs({ whyUs = [] }) {
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
-              color: '#ffffff',
+              color: 'var(--text-heading)',
               lineHeight: '1.3',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
@@ -39,7 +69,7 @@ export default function WhyChooseUs({ whyUs = [] }) {
           <p
             style={{
               fontSize: '1.1rem',
-              color: '#cbd5e1',
+              color: 'var(--text-body)',
               lineHeight: '1.7',
               maxWidth: '720px',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
@@ -56,13 +86,13 @@ export default function WhyChooseUs({ whyUs = [] }) {
               key={item.id || index}
               className={`pentaloop-card stagger-${(index % 4) + 1}`}
               style={{
-                backgroundColor: 'rgba(15, 23, 42, 0.65)',
+                backgroundColor: 'var(--bg-card)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 borderRadius: '20px',
                 padding: '2.25rem',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.35)',
+                border: '1px solid var(--border-card)',
+                boxShadow: 'var(--shadow-card)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start'
@@ -73,24 +103,22 @@ export default function WhyChooseUs({ whyUs = [] }) {
                   width: '56px',
                   height: '56px',
                   borderRadius: '14px',
-                  backgroundColor: 'rgba(99, 102, 241, 0.15)',
-                  border: '1px solid rgba(99, 102, 241, 0.3)',
+                  backgroundColor: 'var(--primary-light)',
+                  border: '1px solid var(--primary-border)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.75rem',
                   marginBottom: '1.5rem',
-                  color: '#ffffff'
                 }}
               >
-                {item.icon}
+                {getWhyUsIcon(item, index)}
               </div>
 
               <h3
                 style={{
                   fontSize: '1.2rem',
                   fontWeight: '800',
-                  color: '#ffffff',
+                  color: 'var(--text-heading)',
                   marginBottom: '0.75rem',
                   lineHeight: '1.3',
                   fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
@@ -101,7 +129,7 @@ export default function WhyChooseUs({ whyUs = [] }) {
 
               <p
                 style={{
-                  color: '#cbd5e1',
+                  color: 'var(--text-body)',
                   fontSize: '0.925rem',
                   lineHeight: '1.65',
                   margin: 0,
@@ -117,3 +145,4 @@ export default function WhyChooseUs({ whyUs = [] }) {
     </section>
   );
 }
+

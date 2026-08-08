@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Layers } from 'lucide-react';
 
 const DEFAULT_NAV = [
   { id: '1', label: 'HOME', path: '/' },
@@ -42,16 +43,12 @@ export default function Header({ navigation }) {
         left: 0,
         right: 0,
         top: 0,
-        backgroundColor: scrolled ? 'rgba(11, 15, 25, 0.95)' : 'rgba(11, 15, 25, 0.6)',
-        backdropFilter: 'blur(28px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(28px) saturate(180%)',
+        backgroundColor: 'var(--bg-base)',
         zIndex: 1000,
         boxShadow: scrolled
-          ? '0 8px 32px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(99, 102, 241, 0.2)'
+          ? '0 2px 12px rgba(0, 0, 0, 0.08)'
           : 'none',
-        borderBottom: scrolled
-          ? '1px solid rgba(99, 102, 241, 0.25)'
-          : '1px solid rgba(255, 255, 255, 0.06)',
+        borderBottom: '1px solid var(--border-subtle)',
         transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
@@ -64,22 +61,37 @@ export default function Header({ navigation }) {
           height: '70px',
         }}
       >
-        {/* Brand Name */}
+        {/* Brand Name with Vector SVG Logo Mark */}
         <Link
           href="/"
           style={{
             textDecoration: 'none',
             display: 'flex',
-            alignItems: 'baseline',
-            gap: '0.4rem',
+            alignItems: 'center',
+            gap: '0.65rem',
             flexShrink: 0,
           }}
         >
+          <div
+            style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '10px',
+              background: 'var(--gradient-primary)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 4px 12px var(--primary-glow)',
+            }}
+          >
+            <Layers size={22} color="#FFFFFF" />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.35rem' }}>
             <span
               style={{
-                fontSize: '1.4rem',
+                fontSize: '1.35rem',
                 fontWeight: '900',
-                color: '#ffffff',
+                color: 'var(--text-heading)',
                 letterSpacing: '-0.02em',
                 lineHeight: 1.3,
               }}
@@ -88,9 +100,9 @@ export default function Header({ navigation }) {
             </span>
             <span
               style={{
-                fontSize: '1.4rem',
+                fontSize: '1.35rem',
                 fontWeight: '900',
-                background: 'linear-gradient(135deg, #6366f1 0%, #06b6d4 100%)',
+                background: 'var(--gradient-primary)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 letterSpacing: '-0.02em',
@@ -100,6 +112,7 @@ export default function Header({ navigation }) {
             >
               Technologies
             </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -144,7 +157,7 @@ export default function Header({ navigation }) {
                           transform: careersDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                           transition: 'transform 0.25s ease',
                           flexShrink: 0,
-                          stroke: isActive ? '#ffffff' : '#94a3b8',
+                          stroke: isActive ? 'var(--text-heading)' : 'var(--text-muted)',
                           strokeWidth: '1.8',
                           strokeLinecap: 'round',
                           strokeLinejoin: 'round'
@@ -162,13 +175,13 @@ export default function Header({ navigation }) {
                           top: '70px',
                           left: '-1rem',
                           width: '260px',
-                          backgroundColor: 'rgba(15, 23, 42, 0.97)',
+                          backgroundColor: 'var(--bg-card)',
                           backdropFilter: 'blur(24px)',
                           WebkitBackdropFilter: 'blur(24px)',
-                          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+                          boxShadow: 'var(--shadow-card)',
                           borderRadius: '0 0 16px 16px',
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
-                          borderTop: '2px solid #6366f1',
+                          border: '1px solid var(--border-subtle)',
+                          borderTop: '2px solid var(--primary)',
                           padding: '0.5rem 0',
                           zIndex: 1001,
                         }}
@@ -180,13 +193,13 @@ export default function Header({ navigation }) {
                             style={{
                               display: 'block',
                               padding: '0.75rem 1.35rem',
-                              color: pathname === sub.path ? '#06b6d4' : '#cbd5e1',
+                              color: pathname === sub.path ? 'var(--primary)' : 'var(--text-body)',
                               fontWeight: pathname === sub.path ? '800' : '600',
                               fontSize: '0.85rem',
                               textDecoration: 'none',
-                              backgroundColor: pathname === sub.path ? 'rgba(99, 102, 241, 0.15)' : 'transparent',
+                              backgroundColor: pathname === sub.path ? 'var(--primary-light)' : 'transparent',
                               transition: 'all 0.2s ease',
-                              borderLeft: pathname === sub.path ? '3px solid #6366f1' : '3px solid transparent',
+                              borderLeft: pathname === sub.path ? '3px solid var(--primary)' : '3px solid transparent',
                             }}
                           >
                             {sub.label}
@@ -222,7 +235,7 @@ export default function Header({ navigation }) {
               border: 'none',
               fontSize: '1.5rem',
               cursor: 'pointer',
-              color: '#ffffff',
+              color: 'var(--text-heading)',
             }}
           >
             {mobileMenuOpen ? '✕' : '☰'}

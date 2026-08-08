@@ -13,25 +13,25 @@ export default function EventsPage() {
   ];
 
   return (
-    <div style={{ backgroundColor: '#0b0f19' }}>
+    <div style={{ backgroundColor: 'var(--bg-base)' }}>
       <section
         style={{
-          backgroundColor: '#0f172a',
-          backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, transparent 60%)',
-          color: '#ffffff',
+          backgroundColor: 'var(--bg-hero)',
+          backgroundImage: 'var(--gradient-hero-glow)',
+          color: 'var(--text-heading)',
           padding: '5.5rem 0',
           textAlign: 'center',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+          borderBottom: '1px solid var(--border-subtle)'
         }}
       >
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
-          <div style={{ display: 'inline-block', padding: '0.4rem 1.2rem', backgroundColor: 'rgba(99, 102, 241, 0.15)', color: '#06b6d4', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', borderRadius: '50px', marginBottom: '1.2rem', border: '1px solid rgba(99, 102, 241, 0.3)', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+          <div style={{ display: 'inline-block', padding: '0.4rem 1.2rem', backgroundColor: 'var(--primary-light)', color: 'var(--primary)', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', borderRadius: '50px', marginBottom: '1.2rem', border: '1px solid var(--primary-border)', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
             EVENTS & CULTURE
           </div>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: '900', marginBottom: '1rem', letterSpacing: '-0.03em', color: '#ffffff', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: '900', marginBottom: '1rem', letterSpacing: '-0.03em', color: 'var(--text-heading)', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
             Tech Meetups & <span className="text-gradient-cyan">Webinars</span>
           </h1>
-          <p style={{ fontSize: '1.15rem', color: '#94a3b8', maxWidth: '680px', margin: '0 auto', lineHeight: '1.65', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+          <p style={{ fontSize: '1.15rem', color: 'var(--text-muted)', maxWidth: '680px', margin: '0 auto', lineHeight: '1.65', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
             We share knowledge, sponsor tech conferences, and run workshops on Next.js, Cloud DevOps, and AI.
           </p>
         </div>
@@ -44,12 +44,12 @@ export default function EventsPage() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: 'rgba(15, 23, 42, 0.75)',
+                  backgroundColor: 'var(--bg-card)',
                   backdropFilter: 'blur(16px)',
                   padding: '2rem 2.5rem',
                   borderRadius: '16px',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderLeft: '4px solid #06b6d4',
+                  border: '1px solid var(--border-subtle)',
+                  borderLeft: '4px solid var(--primary)',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
@@ -58,8 +58,8 @@ export default function EventsPage() {
                 }}
               >
                 <div>
-                  <span style={{ fontSize: '0.85rem', fontWeight: '800', color: '#06b6d4' }}>{ev.date} • {ev.type}</span>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#ffffff', margin: '0.4rem 0 0' }}>{ev.title}</h3>
+                  <span style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--primary)' }}>{ev.date} • {ev.type}</span>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--text-heading)', margin: '0.4rem 0 0' }}>{ev.title}</h3>
                 </div>
                 <Link href="/contact" className="btn btn-outline">
                   REGISTER NOW →

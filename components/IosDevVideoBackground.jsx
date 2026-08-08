@@ -59,7 +59,7 @@ export default function IosDevVideoBackground() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            opacity: currentVideo === idx ? 0.6 : 0,
+            opacity: currentVideo === idx ? 0.85 : 0,
             transition: 'opacity 1.2s ease-in-out',
             zIndex: 1
           }}
@@ -76,7 +76,7 @@ export default function IosDevVideoBackground() {
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.55) 0%, rgba(11, 15, 25, 0.3) 50%, rgba(11, 15, 25, 0.6) 100%)',
+          background: 'linear-gradient(180deg, #00000099 0%, #00000080 50%, #00000099 100%)',
           zIndex: 2
         }}
       />

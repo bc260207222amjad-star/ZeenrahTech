@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getSiteConfig } from '@/lib/getSiteConfig';
+import { Target, Eye, ArrowRight } from 'lucide-react';
 
 export async function generateMetadata() {
   const config = getSiteConfig();
@@ -14,16 +15,16 @@ export default function AboutPage() {
   const { about } = config;
 
   return (
-    <div style={{ backgroundColor: '#0b0f19' }}>
+    <div style={{ backgroundColor: 'var(--bg-base)' }}>
       {/* Page Hero Header */}
       <section
         style={{
-          backgroundColor: '#0f172a',
-          backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, transparent 60%)',
-          color: '#ffffff',
+          backgroundColor: 'var(--bg-hero)',
+          backgroundImage: 'var(--gradient-hero-glow)',
+          color: 'var(--text-heading)',
           padding: '5.5rem 0',
           textAlign: 'center',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+          borderBottom: '1px solid var(--border-subtle)'
         }}
       >
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
@@ -31,14 +32,14 @@ export default function AboutPage() {
             style={{
               display: 'inline-block',
               padding: '0.4rem 1.2rem',
-              backgroundColor: 'rgba(99, 102, 241, 0.15)',
-              color: '#06b6d4',
+              backgroundColor: 'var(--primary-light)',
+              color: 'var(--primary)',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               borderRadius: '50px',
               marginBottom: '1.2rem',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
+              border: '1px solid var(--primary-border)',
             }}
           >
             ABOUT ZEENRAH TECHNOLOGIES
@@ -49,7 +50,7 @@ export default function AboutPage() {
               fontWeight: '900',
               marginBottom: '1rem',
               letterSpacing: '-0.03em',
-              color: '#ffffff',
+              color: 'var(--text-heading)',
             }}
           >
             {about.heroTitle.split(' ').slice(0, -2).join(' ')}{' '}
@@ -58,7 +59,7 @@ export default function AboutPage() {
           <p
             style={{
               fontSize: '1.15rem',
-              color: '#94a3b8',
+              color: 'var(--text-muted)',
               maxWidth: '680px',
               margin: '0 auto',
               lineHeight: '1.65',
@@ -70,13 +71,13 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section style={{ padding: '6rem 0', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+      <section style={{ padding: '6rem 0', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#ffffff', marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--text-heading)', marginBottom: '1rem' }}>
               Driven by Innovation, <span className="text-gradient-cyan">Defined by Code</span>
             </h2>
-            <p style={{ color: '#94a3b8', fontSize: '1.1rem', maxWidth: '720px', margin: '0 auto', lineHeight: '1.65' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '720px', margin: '0 auto', lineHeight: '1.65' }}>
               Our mission is to empower ambitious companies with scalable technology architectures that drive measurable business outcomes.
             </p>
           </div>
@@ -84,38 +85,42 @@ export default function AboutPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
             <div
               style={{
-                backgroundColor: 'rgba(15, 23, 42, 0.75)',
+                backgroundColor: 'var(--bg-card)',
                 backdropFilter: 'blur(16px)',
                 padding: '2.5rem',
                 borderRadius: '20px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderBottom: '4px solid #6366f1'
+                border: '1px solid var(--border-subtle)',
+                borderBottom: '4px solid var(--primary)'
               }}
             >
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🎯</div>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#ffffff', marginBottom: '0.85rem' }}>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <Target size={36} color="var(--primary)" />
+              </div>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.85rem' }}>
                 {about.missionTitle}
               </h3>
-              <p style={{ color: '#94a3b8', lineHeight: '1.7', fontSize: '0.975rem' }}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.975rem' }}>
                 {about.missionText}
               </p>
             </div>
 
             <div
               style={{
-                backgroundColor: 'rgba(15, 23, 42, 0.75)',
+                backgroundColor: 'var(--bg-card)',
                 backdropFilter: 'blur(16px)',
                 padding: '2.5rem',
                 borderRadius: '20px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderBottom: '4px solid #06b6d4'
+                border: '1px solid var(--border-subtle)',
+                borderBottom: '4px solid var(--primary)'
               }}
             >
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>👁️</div>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#ffffff', marginBottom: '0.85rem' }}>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <Eye size={36} color="#38BDF8" />
+              </div>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.85rem' }}>
                 {about.visionTitle}
               </h3>
-              <p style={{ color: '#94a3b8', lineHeight: '1.7', fontSize: '0.975rem' }}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.975rem' }}>
                 {about.visionText}
               </p>
             </div>
@@ -124,19 +129,19 @@ export default function AboutPage() {
       </section>
 
       {/* Growth Journey Milestones */}
-      <section style={{ padding: '6rem 0', backgroundColor: '#0f172a' }}>
+      <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-hero)' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <div style={{ display: 'inline-block', padding: '0.4rem 1.2rem', backgroundColor: 'rgba(99, 102, 241, 0.12)', color: '#06b6d4', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', borderRadius: '50px', marginBottom: '0.8rem', border: '1px solid rgba(99, 102, 241, 0.3)' }}>OUR JOURNEY</div>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: '900', color: '#ffffff' }}>Company Growth Milestones</h2>
+            <div style={{ display: 'inline-block', padding: '0.4rem 1.2rem', backgroundColor: 'var(--primary-light)', color: 'var(--primary)', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', borderRadius: '50px', marginBottom: '0.8rem', border: '1px solid var(--primary-border)' }}>OUR JOURNEY</div>
+            <h2 style={{ fontSize: '2.4rem', fontWeight: '900', color: 'var(--text-heading)' }}>Company Growth Milestones</h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
             {about.milestones.map((m, idx) => (
-              <div key={idx} style={{ backgroundColor: 'rgba(11, 15, 25, 0.8)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.08)', borderLeft: '4px solid #6366f1' }}>
-                <span style={{ fontSize: '1.6rem', fontWeight: '900', color: '#06b6d4' }}>{m.year}</span>
-                <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', margin: '0.5rem 0' }}>{m.title}</h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.6', margin: 0 }}>{m.desc}</p>
+              <div key={idx} style={{ backgroundColor: 'var(--bg-card)', padding: '2rem', borderRadius: '16px', border: '1px solid var(--border-subtle)', borderLeft: '4px solid var(--primary)' }}>
+                <span style={{ fontSize: '1.6rem', fontWeight: '900', color: 'var(--primary)' }}>{m.year}</span>
+                <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', margin: '0.5rem 0' }}>{m.title}</h4>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6', margin: 0 }}>{m.desc}</p>
               </div>
             ))}
           </div>

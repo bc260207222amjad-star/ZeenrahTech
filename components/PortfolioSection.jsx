@@ -1,6 +1,145 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
+import { Activity, ShieldCheck, Zap, Navigation, TrendingUp, Cpu, ShoppingBag, Radio } from 'lucide-react';
+
+function CaseStudyVisualizer({ item, index }) {
+  const id = item.id || `p${index + 1}`;
+  const title = (item.title || '').toLowerCase();
+
+  // 1. FinTech Wealth Management Dashboard
+  if (id === 'p1' || title.includes('fintech') || title.includes('wealth')) {
+    return (
+      <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #0b1329 0%, #111c38 100%)', padding: '1.25rem', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderBottom: '1px solid var(--border-subtle)' }}>
+        {/* Top bar */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Activity size={16} color="#38BDF8" />
+            <span style={{ fontSize: '0.75rem', fontWeight: '800', color: '#93C5FD', letterSpacing: '0.05em' }}>WEBSOCKET LIVE TICKER</span>
+          </div>
+          <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem', background: 'rgba(52, 211, 153, 0.15)', color: '#34D399', borderRadius: '4px', fontWeight: '800', border: '1px solid rgba(52, 211, 153, 0.3)' }}>● CONNECTED (2ms)</span>
+        </div>
+
+        {/* Live Candlestick / Bar Chart Graphic */}
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '90px', padding: '0.5rem 0' }}>
+          {[35, 55, 45, 75, 60, 85, 70, 95, 80, 110, 100, 130].map((h, i) => (
+            <div key={i} style={{ flex: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
+              <div
+                style={{
+                  width: '100%',
+                  height: `${h}%`,
+                  background: i >= 8 ? 'linear-gradient(180deg, #38BDF8 0%, #3B82F6 100%)' : 'rgba(255, 255, 255, 0.15)',
+                  borderRadius: '4px 4px 0 0',
+                  boxShadow: i >= 8 ? '0 0 12px rgba(56, 189, 248, 0.4)' : 'none',
+                  transition: 'height 0.4s ease'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom ticker readout */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '0.6rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', color: '#94A3B8' }}>
+            <span>BTC/USD <strong style={{ color: '#34D399' }}>$98,420 +4.2%</strong></span>
+            <span>NVDA <strong style={{ color: '#38BDF8' }}>$142.10 +2.8%</strong></span>
+          </div>
+          <TrendingUp size={14} color="#34D399" />
+        </div>
+      </div>
+    );
+  }
+
+  // 2. AI Diagnostic & Patient Portal System
+  if (id === 'p2' || title.includes('ai') || title.includes('patient') || title.includes('health')) {
+    return (
+      <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #091e1d 0%, #0d2f2d 100%)', padding: '1.25rem', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderBottom: '1px solid var(--border-subtle)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Cpu size={16} color="#34D399" />
+            <span style={{ fontSize: '0.75rem', fontWeight: '800', color: '#6EE7B7', letterSpacing: '0.05em' }}>AI DIAGNOSTIC MODEL v4.2</span>
+          </div>
+          <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem', background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', borderRadius: '4px', fontWeight: '800', border: '1px solid rgba(56, 189, 248, 0.3)' }}>99.4% CONFIDENCE</span>
+        </div>
+
+        {/* Neural Network Scanner Simulation */}
+        <div style={{ position: 'relative', height: '90px', background: 'rgba(0,0,0,0.3)', borderRadius: '12px', border: '1px stroke rgba(52, 211, 153, 0.2)', padding: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <span style={{ fontSize: '0.7rem', color: '#94A3B8' }}>DICOM SCANNER STATUS</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: '800', color: '#FFFFFF' }}>HIPAA COMPLIANT ENCRYPTION</span>
+          </div>
+          <div style={{ width: '50px', height: '50px', borderRadius: '50%', border: '3px stroke #34D399', borderTopColor: 'transparent', animation: 'spin 4s linear infinite', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <ShieldCheck size={22} color="#34D399" />
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '0.6rem', color: '#94A3B8' }}>
+          <span>LATENCY: <strong>14ms</strong></span>
+          <span>PIPELINE: <strong>RAG + OpenAi GPT-4o</strong></span>
+        </div>
+      </div>
+    );
+  }
+
+  // 3. Enterprise E-Commerce Platform
+  if (id === 'p3' || title.includes('commerce') || title.includes('store')) {
+    return (
+      <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #1e112a 0%, #2a173b 100%)', padding: '1.25rem', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderBottom: '1px solid var(--border-subtle)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <ShoppingBag size={16} color="#F472B6" />
+            <span style={{ fontSize: '0.75rem', fontWeight: '800', color: '#FBCFE8', letterSpacing: '0.05em' }}>HEADLESS COMMERCE ENGINE</span>
+          </div>
+          <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem', background: 'rgba(244, 114, 182, 0.15)', color: '#F472B6', borderRadius: '4px', fontWeight: '800', border: '1px solid rgba(244, 114, 182, 0.3)' }}>50,000 REQ/MIN</span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+          <div style={{ background: 'rgba(0,0,0,0.3)', padding: '0.75rem', borderRadius: '10px', border: '1px solid rgba(244, 114, 182, 0.2)' }}>
+            <span style={{ fontSize: '0.7rem', color: '#94A3B8', display: 'block', marginBottom: '4px' }}>SUB-SECOND TTFB</span>
+            <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#38BDF8' }}>42ms</span>
+          </div>
+          <div style={{ background: 'rgba(0,0,0,0.3)', padding: '0.75rem', borderRadius: '10px', border: '1px solid rgba(244, 114, 182, 0.2)' }}>
+            <span style={{ fontSize: '0.7rem', color: '#94A3B8', display: 'block', marginBottom: '4px' }}>GLOBAL GMV</span>
+            <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#34D399' }}>$12.4M+</span>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '0.6rem', color: '#94A3B8' }}>
+          <span>CACHE HIT: <strong style={{ color: '#F472B6' }}>99.8% Redis</strong></span>
+          <Zap size={14} color="#F59E0B" />
+        </div>
+      </div>
+    );
+  }
+
+  // 4. IoT Fleet Telematics
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #182210 0%, #203016 100%)', padding: '1.25rem', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderBottom: '1px solid var(--border-subtle)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Radio size={16} color="#A3E635" />
+          <span style={{ fontSize: '0.75rem', fontWeight: '800', color: '#D9F99D', letterSpacing: '0.05em' }}>AWS IoT TELEMETRY NODE</span>
+        </div>
+        <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem', background: 'rgba(163, 230, 53, 0.15)', color: '#A3E635', borderRadius: '4px', fontWeight: '800', border: '1px solid rgba(163, 230, 53, 0.3)' }}>5,000+ VEHICLES LIVE</span>
+      </div>
+
+      <div style={{ background: 'rgba(0,0,0,0.3)', height: '90px', borderRadius: '10px', border: '1px solid rgba(163, 230, 53, 0.2)', padding: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div>
+          <span style={{ fontSize: '0.7rem', color: '#94A3B8', display: 'block' }}>GPS VECTOR ROUTE TRACKER</span>
+          <span style={{ fontSize: '0.88rem', fontWeight: '800', color: '#FFFFFF' }}>37.7749° N, 122.4194° W</span>
+        </div>
+        <div style={{ padding: '0.5rem', background: 'rgba(163, 230, 53, 0.2)', borderRadius: '50%' }}>
+          <Navigation size={20} color="#A3E635" />
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '0.6rem', color: '#94A3B8' }}>
+        <span>FUEL EFFICIENCY: <strong style={{ color: '#A3E635' }}>+18.4%</strong></span>
+        <span>STATUS: <strong style={{ color: '#34D399' }}>ACTIVE</strong></span>
+      </div>
+    </div>
+  );
+}
 
 export default function PortfolioSection({ portfolio = [] }) {
   const scrollRef = useRef(null);
@@ -80,22 +219,22 @@ export default function PortfolioSection({ portfolio = [] }) {
   }, []);
 
   return (
-    <section style={{ padding: '6rem 0', backgroundColor: '#0b0f19', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+    <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-alt)', borderBottom: '1px solid var(--border-subtle)' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div
             style={{
               display: 'inline-block',
               padding: '0.45rem 1.3rem',
-              backgroundColor: 'rgba(99, 102, 241, 0.12)',
-              color: '#06b6d4',
+              backgroundColor: 'var(--primary-light)',
+              color: 'var(--primary)',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid rgba(99, 102, 241, 0.3)',
+              border: '1px solid var(--primary-border)',
             }}
           >
             FEATURED CASE STUDIES
@@ -104,7 +243,7 @@ export default function PortfolioSection({ portfolio = [] }) {
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
-              color: '#ffffff',
+              color: 'var(--text-heading)',
               lineHeight: '1.2',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
@@ -115,7 +254,7 @@ export default function PortfolioSection({ portfolio = [] }) {
           <p
             style={{
               fontSize: '1.1rem',
-              color: '#cbd5e1',
+              color: 'var(--text-body)',
               lineHeight: '1.65',
               maxWidth: '720px',
             }}
@@ -154,12 +293,12 @@ export default function PortfolioSection({ portfolio = [] }) {
             style={{
               minWidth: '380px',
               maxWidth: '380px',
-              backgroundColor: 'rgba(15, 23, 42, 0.65)',
+              backgroundColor: 'var(--bg-card)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               borderRadius: '20px',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.35)',
+              border: '1px solid var(--border-card)',
+              boxShadow: 'var(--shadow-card)',
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
@@ -167,33 +306,25 @@ export default function PortfolioSection({ portfolio = [] }) {
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
             }}
           >
-            {/* Image */}
-            <div style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden' }}>
-              <img
-                src={item.image}
-                alt={item.title}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  pointerEvents: 'none',
-                }}
-              />
+            {/* Interactive Vector UI Visualizer Container */}
+            <div style={{ position: 'relative' }}>
+              <CaseStudyVisualizer item={item} index={index} />
+              
               {/* Metric Badge */}
               <div
                 style={{
                   position: 'absolute',
                   top: '0.85rem',
                   right: '0.85rem',
-                  backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                  backgroundColor: 'rgba(5, 5, 5, 0.75)',
                   backdropFilter: 'blur(12px)',
-                  color: '#06b6d4',
+                  color: '#FFFFFF',
                   fontWeight: '800',
                   fontSize: '0.75rem',
                   padding: '0.4rem 0.85rem',
                   borderRadius: '50px',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                  border: '1px solid rgba(6, 182, 212, 0.4)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+                  border: '1px solid rgba(255,255,255,0.2)',
                 }}
               >
                 {item.metric}
@@ -207,7 +338,7 @@ export default function PortfolioSection({ portfolio = [] }) {
                   style={{
                     fontSize: '1.15rem',
                     fontWeight: '800',
-                    color: '#ffffff',
+                    color: 'var(--text-heading)',
                     marginBottom: '0.65rem',
                     lineHeight: '1.35',
                   }}
@@ -216,7 +347,7 @@ export default function PortfolioSection({ portfolio = [] }) {
                 </h3>
                 <p
                   style={{
-                    color: '#cbd5e1',
+                    color: 'var(--text-body)',
                     fontSize: '0.88rem',
                     lineHeight: '1.6',
                     marginBottom: '1.25rem',
@@ -232,12 +363,12 @@ export default function PortfolioSection({ portfolio = [] }) {
                     key={tIdx}
                     style={{
                       padding: '0.25rem 0.65rem',
-                      backgroundColor: 'rgba(99, 102, 241, 0.15)',
-                      color: '#cbd5e1',
+                      backgroundColor: 'var(--primary-light)',
+                      color: 'var(--text-body)',
                       fontWeight: '700',
                       fontSize: '0.72rem',
                       borderRadius: '6px',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      border: '1px solid var(--border-subtle)',
                     }}
                   >
                     {tag}
@@ -251,3 +382,4 @@ export default function PortfolioSection({ portfolio = [] }) {
     </section>
   );
 }
+
