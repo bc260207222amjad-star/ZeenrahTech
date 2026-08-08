@@ -444,7 +444,8 @@ export default function TechStackSection({ technologies = [] }) {
             }}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 240px))',
+              justifyContent: 'center',
               gap: '1.5rem',
               minHeight: '280px'
             }}
@@ -453,20 +454,18 @@ export default function TechStackSection({ technologies = [] }) {
               <motion.div
                 key={tech.id || tech.name || index}
                 variants={{
-                  hidden: { opacity: 0, y: 30, scale: 0.92 },
+                  hidden: { opacity: 0, y: 25 },
                   show: {
                     opacity: 1,
                     y: 0,
-                    scale: 1,
                     transition: {
-                      duration: 0.45,
+                      duration: 0.4,
                       ease: EASE_CURVE
                     }
                   }
                 }}
                 whileHover={{
                   y: -6,
-                  scale: 1.03,
                   boxShadow: '0 16px 35px rgba(56, 189, 248, 0.2)',
                   transition: { duration: 0.2, ease: 'easeOut' }
                 }}
@@ -483,6 +482,9 @@ export default function TechStackSection({ technologies = [] }) {
                   borderBottom: '3px solid var(--primary)',
                   borderRadius: '16px',
                   boxShadow: 'var(--shadow-card)',
+                  width: '100%',
+                  height: '100%',
+                  boxSizing: 'border-box',
                   cursor: 'pointer'
                 }}
               >
