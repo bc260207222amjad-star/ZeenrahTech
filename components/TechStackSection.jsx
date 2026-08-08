@@ -338,11 +338,7 @@ export default function TechStackSection({ technologies = [] }) {
             OUR TECH MATRIX & SKILLS
           </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
+          <h2
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
@@ -350,11 +346,47 @@ export default function TechStackSection({ technologies = [] }) {
               lineHeight: '1.2',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '0.45em',
+              flexWrap: 'wrap',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            Technologies We <span className="text-gradient-cyan">Master</span>
-          </motion.h2>
+            {/* 1. Word: Technologies (drops down from above first) */}
+            <motion.span
+              initial={{ opacity: 0, y: -25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: EASE_CURVE }}
+              style={{ display: 'inline-block' }}
+            >
+              Technologies
+            </motion.span>
+
+            {/* 2. Word: We (drops down from above second) */}
+            <motion.span
+              initial={{ opacity: 0, y: -25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.25, ease: EASE_CURVE }}
+              style={{ display: 'inline-block' }}
+            >
+              We
+            </motion.span>
+
+            {/* 3. Word: Master (drops down from above third) */}
+            <motion.span
+              initial={{ opacity: 0, y: -25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.4, ease: EASE_CURVE }}
+              className="text-gradient-cyan"
+              style={{ display: 'inline-block' }}
+            >
+              Master
+            </motion.span>
+          </h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
