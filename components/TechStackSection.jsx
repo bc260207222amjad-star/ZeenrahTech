@@ -422,28 +422,47 @@ export default function TechStackSection({ technologies = [] }) {
           })}
         </motion.div>
 
-        {/* Fluid PopLayout Grid Cards Transition */}
-        <motion.div
-          layout
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-            gap: '1.5rem',
-            minHeight: '280px'
-          }}
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredTech.map((tech) => (
+        {/* Strict 1-by-1 Sequential Staggered Grid Cards Transition */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            variants={{
+              hidden: { opacity: 1 },
+              show: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.08 // 1st card -> 2nd card -> 3rd card -> 4th card in strict sequence!
+                }
+              },
+              exit: {
+                opacity: 0,
+                transition: { duration: 0.15 }
+              }
+            }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gap: '1.5rem',
+              minHeight: '280px'
+            }}
+          >
+            {filteredTech.map((tech, index) => (
               <motion.div
-                key={tech.id || tech.name}
-                layout
-                initial={{ opacity: 0, scale: 0.88, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.88, y: -15 }}
-                transition={{
-                  duration: 0.35,
-                  ease: EASE_CURVE,
-                  layout: { duration: 0.35, ease: EASE_CURVE }
+                key={tech.id || tech.name || index}
+                variants={{
+                  hidden: { opacity: 0, y: 30, scale: 0.92 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      duration: 0.45,
+                      ease: EASE_CURVE
+                    }
+                  }
                 }}
                 whileHover={{
                   y: -6,
@@ -509,8 +528,8 @@ export default function TechStackSection({ technologies = [] }) {
                 </p>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
