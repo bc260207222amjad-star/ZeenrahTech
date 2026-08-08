@@ -392,7 +392,7 @@ export default function TechStackSection({ technologies = [] }) {
           ))}
         </motion.div>
 
-        {/* 3D Page Curl Fold Cards Transition */}
+        {/* Sleek Staggered Fade-Up Grid Cards Transition */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}
@@ -404,13 +404,13 @@ export default function TechStackSection({ technologies = [] }) {
               visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.05
+                  staggerChildren: 0.04
                 }
               },
               exit: {
                 opacity: 0,
                 transition: {
-                  staggerChildren: 0.03,
+                  staggerChildren: 0.02,
                   staggerDirection: -1
                 }
               }
@@ -418,8 +418,7 @@ export default function TechStackSection({ technologies = [] }) {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-              gap: '1.5rem',
-              perspective: '1200px'
+              gap: '1.5rem'
             }}
           >
             {filteredTech.map((tech, index) => (
@@ -428,40 +427,35 @@ export default function TechStackSection({ technologies = [] }) {
                 variants={{
                   hidden: {
                     opacity: 0,
-                    rotateX: -65,
-                    y: 50,
-                    transformOrigin: 'top center'
+                    y: 25,
+                    scale: 0.95
                   },
                   visible: {
                     opacity: 1,
-                    rotateX: 0,
                     y: 0,
-                    transformOrigin: 'top center',
+                    scale: 1,
                     transition: {
-                      duration: 0.7,
+                      duration: 0.5,
                       ease: EASE_CURVE
                     }
                   },
                   exit: {
                     opacity: 0,
-                    rotateX: 65,
-                    y: -30,
-                    transformOrigin: 'bottom center',
+                    y: -15,
+                    scale: 0.95,
                     transition: {
-                      duration: 0.35,
+                      duration: 0.3,
                       ease: EASE_CURVE
                     }
                   }
                 }}
                 whileHover={{
-                  scale: 1.05,
-                  rotateX: -8,
-                  rotateY: 5,
-                  boxShadow: '0 20px 40px rgba(56, 189, 248, 0.2)',
-                  transition: { duration: 0.3, ease: 'easeOut' }
+                  y: -6,
+                  scale: 1.03,
+                  boxShadow: '0 16px 35px rgba(56, 189, 248, 0.18)',
+                  transition: { duration: 0.25, ease: 'easeOut' }
                 }}
                 style={{
-                  transformStyle: 'preserve-3d',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -474,25 +468,9 @@ export default function TechStackSection({ technologies = [] }) {
                   borderBottom: '3px solid var(--primary)',
                   borderRadius: '16px',
                   boxShadow: 'var(--shadow-card)',
-                  position: 'relative',
                   cursor: 'pointer'
                 }}
               >
-                {/* 3D Page Curl Fold Corner Indicator */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: '0',
-                    height: '0',
-                    borderStyle: 'solid',
-                    borderWidth: '0 22px 22px 0',
-                    borderColor: 'transparent rgba(56, 189, 248, 0.35) transparent transparent',
-                    borderRadius: '0 16px 0 0'
-                  }}
-                />
-
                 {/* Premium Vector SVG Logo Badge */}
                 <div
                   style={{
