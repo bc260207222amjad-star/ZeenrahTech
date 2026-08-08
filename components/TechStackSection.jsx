@@ -354,34 +354,34 @@ export default function TechStackSection({ technologies = [] }) {
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            {/* 1. Word: Technologies */}
+            {/* 1. Word: Technologies (DRAMATIC drop from -120px above) */}
             <motion.span
-              initial={{ opacity: 0, y: -50, filter: 'blur(4px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: 0.1, ease: EASE_CURVE }}
+              initial={{ opacity: 0, y: -120, scale: 1.2, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+              viewport={{ once: false, amount: 0.4 }}
+              transition={{ type: 'spring', stiffness: 120, damping: 11, delay: 0.1 }}
               style={{ display: 'inline-block', verticalAlign: 'baseline' }}
             >
               Technologies
             </motion.span>
 
-            {/* 2. Word: We */}
+            {/* 2. Word: We (DRAMATIC drop from -120px above second) */}
             <motion.span
-              initial={{ opacity: 0, y: -50, filter: 'blur(4px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: 0.3, ease: EASE_CURVE }}
+              initial={{ opacity: 0, y: -120, scale: 1.2, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+              viewport={{ once: false, amount: 0.4 }}
+              transition={{ type: 'spring', stiffness: 120, damping: 11, delay: 0.38 }}
               style={{ display: 'inline-block', verticalAlign: 'baseline' }}
             >
               We
             </motion.span>
 
-            {/* 3. Word: Master */}
+            {/* 3. Word: Master (DRAMATIC drop from -120px above third) */}
             <motion.span
-              initial={{ opacity: 0, y: -50, filter: 'blur(4px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: 0.5, ease: EASE_CURVE }}
+              initial={{ opacity: 0, y: -120, scale: 1.2, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+              viewport={{ once: false, amount: 0.4 }}
+              transition={{ type: 'spring', stiffness: 120, damping: 11, delay: 0.65 }}
               className="text-gradient-cyan"
               style={{ display: 'inline-block', verticalAlign: 'baseline' }}
             >
