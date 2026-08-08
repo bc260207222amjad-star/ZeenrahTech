@@ -1,6 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const EASE_CURVE = [0.22, 1, 0.36, 1];
 
 // Custom high-quality SVG brand/tech logos with modern design aesthetic
 function TechLogoIcon({ name, fallbackIcon, category }) {
@@ -308,10 +311,15 @@ export default function TechStackSection({ technologies = [] }) {
     : technologies.filter(item => item.category === activeCategory);
 
   return (
-    <section style={{ padding: '5.5rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section style={{ padding: '5.5rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+        {/* Section Header with Staggered Entrance */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: EASE_CURVE }}
             style={{
               display: 'inline-block',
               padding: '0.4rem 1.2rem',
@@ -328,8 +336,13 @@ export default function TechStackSection({ technologies = [] }) {
             }}
           >
             OUR TECH MATRIX & SKILLS
-          </div>
-          <h2
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
@@ -341,8 +354,13 @@ export default function TechStackSection({ technologies = [] }) {
             }}
           >
             Technologies We <span className="text-gradient-cyan">Master</span>
-          </h2>
-          <p
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: EASE_CURVE }}
             style={{
               fontSize: '1.1rem',
               color: 'var(--text-body)',
@@ -352,11 +370,17 @@ export default function TechStackSection({ technologies = [] }) {
             }}
           >
             We leverage cutting-edge frameworks, Python/Java backend architectures, native mobile tech, and scalable cloud infrastructure to build future-proof software.
-          </p>
+          </motion.p>
         </div>
 
         {/* Category Filter Pills */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: EASE_CURVE }}
+          style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '3rem' }}
+        >
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -366,73 +390,155 @@ export default function TechStackSection({ technologies = [] }) {
               {cat.name}
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Tech Grid Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '1.5rem' }}>
-          {filteredTech.map((tech, index) => (
-            <div
-              key={tech.id || index}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-                padding: '1.75rem 1.25rem',
-                backgroundColor: 'var(--bg-card)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid var(--border-card)',
-                borderBottom: '3px solid var(--primary)',
-                borderRadius: '16px',
-                boxShadow: 'var(--shadow-card)',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              {/* Premium Vector SVG Logo Badge */}
-              <div
+        {/* 3D Page Curl Fold Cards Transition */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.05
+                }
+              },
+              exit: {
+                opacity: 0,
+                transition: {
+                  staggerChildren: 0.03,
+                  staggerDirection: -1
+                }
+              }
+            }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gap: '1.5rem',
+              perspective: '1200px'
+            }}
+          >
+            {filteredTech.map((tech, index) => (
+              <motion.div
+                key={tech.id || index}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    rotateX: -65,
+                    y: 50,
+                    transformOrigin: 'top center'
+                  },
+                  visible: {
+                    opacity: 1,
+                    rotateX: 0,
+                    y: 0,
+                    transformOrigin: 'top center',
+                    transition: {
+                      duration: 0.7,
+                      ease: EASE_CURVE
+                    }
+                  },
+                  exit: {
+                    opacity: 0,
+                    rotateX: 65,
+                    y: -30,
+                    transformOrigin: 'bottom center',
+                    transition: {
+                      duration: 0.35,
+                      ease: EASE_CURVE
+                    }
+                  }
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  rotateX: -8,
+                  rotateY: 5,
+                  boxShadow: '0 20px 40px rgba(56, 189, 248, 0.2)',
+                  transition: { duration: 0.3, ease: 'easeOut' }
+                }}
                 style={{
-                  width: '60px',
-                  height: '60px',
-                  borderRadius: '16px',
-                  backgroundColor: 'var(--bg-card)',
-                  border: '1px solid var(--border-subtle)',
-                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.06), inset 0 1px 0 var(--border-subtle)',
+                  transformStyle: 'preserve-3d',
                   display: 'flex',
+                  flexDirection: 'column',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1rem',
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  textAlign: 'center',
+                  padding: '1.75rem 1.25rem',
+                  backgroundColor: 'var(--bg-card)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid var(--border-card)',
+                  borderBottom: '3px solid var(--primary)',
+                  borderRadius: '16px',
+                  boxShadow: 'var(--shadow-card)',
+                  position: 'relative',
+                  cursor: 'pointer'
                 }}
               >
-                <TechLogoIcon name={tech.name} fallbackIcon={tech.icon} category={tech.category} />
-              </div>
+                {/* 3D Page Curl Fold Corner Indicator */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: '0',
+                    height: '0',
+                    borderStyle: 'solid',
+                    borderWidth: '0 22px 22px 0',
+                    borderColor: 'transparent rgba(56, 189, 248, 0.35) transparent transparent',
+                    borderRadius: '0 16px 0 0'
+                  }}
+                />
 
-              <h4
-                style={{
-                  fontSize: '1.1rem',
-                  fontWeight: '800',
-                  marginBottom: '0.35rem',
-                  color: 'var(--text-heading)',
-                  fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-                }}
-              >
-                {tech.name}
-              </h4>
-              <p
-                style={{
-                  fontSize: '0.825rem',
-                  color: 'var(--text-muted)',
-                  margin: 0,
-                  fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-                }}
-              >
-                {tech.desc}
-              </p>
-            </div>
-          ))}
-        </div>
+                {/* Premium Vector SVG Logo Badge */}
+                <div
+                  style={{
+                    width: '60px',
+                    height: '60px',
+                    borderRadius: '16px',
+                    backgroundColor: 'var(--bg-card)',
+                    border: '1px solid var(--border-subtle)',
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.06), inset 0 1px 0 var(--border-subtle)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1rem',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  }}
+                >
+                  <TechLogoIcon name={tech.name} fallbackIcon={tech.icon} category={tech.category} />
+                </div>
+
+                <h4
+                  style={{
+                    fontSize: '1.1rem',
+                    fontWeight: '800',
+                    marginBottom: '0.35rem',
+                    color: 'var(--text-heading)',
+                    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                  }}
+                >
+                  {tech.name}
+                </h4>
+                <p
+                  style={{
+                    fontSize: '0.825rem',
+                    color: 'var(--text-muted)',
+                    margin: 0,
+                    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                  }}
+                >
+                  {tech.desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
 }
+
