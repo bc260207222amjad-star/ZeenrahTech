@@ -343,47 +343,65 @@ export default function TechStackSection({ technologies = [] }) {
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
               color: 'var(--text-heading)',
-              lineHeight: '1.2',
+              lineHeight: '1.4',
               letterSpacing: '-0.03em',
-              marginBottom: '1rem',
+              marginBottom: '1.5rem',
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'baseline',
+              alignItems: 'center',
               gap: '0.45em',
               flexWrap: 'wrap',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            {/* 1. Word: Technologies (DRAMATIC drop from -120px above) */}
+            {/* 1. Word: Technologies (sits highest at -14px with wave lift) */}
             <motion.span
-              initial={{ opacity: 0, y: -120, scale: 1.2, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ type: 'spring', stiffness: 120, damping: 11, delay: 0.1 }}
-              style={{ display: 'inline-block', verticalAlign: 'baseline' }}
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: -14 }}
+              animate={{ y: [-14, -22, -14] }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: 0
+              }}
+              style={{ display: 'inline-block' }}
             >
               Technologies
             </motion.span>
 
-            {/* 2. Word: We (DRAMATIC drop from -120px above second) */}
+            {/* 2. Word: We (sits in middle at 0px with wave lift) */}
             <motion.span
-              initial={{ opacity: 0, y: -120, scale: 1.2, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ type: 'spring', stiffness: 120, damping: 11, delay: 0.38 }}
-              style={{ display: 'inline-block', verticalAlign: 'baseline' }}
+              initial={{ opacity: 0, y: -15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ y: [0, -8, 0] }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: 0.3
+              }}
+              style={{ display: 'inline-block' }}
             >
               We
             </motion.span>
 
-            {/* 3. Word: Master (DRAMATIC drop from -120px above third) */}
+            {/* 3. Word: Master (sits lowest at +14px with wave lift) */}
             <motion.span
-              initial={{ opacity: 0, y: -120, scale: 1.2, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ type: 'spring', stiffness: 120, damping: 11, delay: 0.65 }}
+              initial={{ opacity: 0, y: 0 }}
+              whileInView={{ opacity: 1, y: 14 }}
+              animate={{ y: [14, 6, 14] }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: 0.6
+              }}
               className="text-gradient-cyan"
-              style={{ display: 'inline-block', verticalAlign: 'baseline' }}
+              style={{ display: 'inline-block' }}
             >
               Master
             </motion.span>
