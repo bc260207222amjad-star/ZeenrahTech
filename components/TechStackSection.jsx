@@ -293,8 +293,35 @@ function TechLogoIcon({ name, fallbackIcon, category }) {
   );
 }
 
+const DEFAULT_TECHNOLOGIES = [
+  { id: "t1", name: "Next.js 15", category: "frontend", icon: "Next", desc: "Server Actions & App Router" },
+  { id: "t2", name: "React 19", category: "frontend", icon: "React", desc: "Concurrent UI & Hooks" },
+  { id: "t3", name: "TypeScript", category: "frontend", icon: "TS", desc: "Strict End-to-End Typing" },
+  { id: "t4", name: "Tailwind CSS", category: "frontend", icon: "Tailwind", desc: "Utility Design System" },
+  { id: "t5", name: "Python FastAPI", category: "python", icon: "FastAPI", desc: "High Performance Async Microservices" },
+  { id: "t6", name: "Django", category: "python", icon: "Django", desc: "Full-Stack Enterprise Framework" },
+  { id: "t7", name: "Flask", category: "python", icon: "Flask", desc: "Lightweight REST APIs" },
+  { id: "t8", name: "PyTorch / ML", category: "python", icon: "PyTorch", desc: "Deep Learning & ML Models" },
+  { id: "t9", name: "Java Spring Boot", category: "java", icon: "Spring", desc: "Enterprise Cloud Microservices" },
+  { id: "t10", name: "Hibernate / JPA", category: "java", icon: "Hibernate", desc: "Object-Relational Data Mapping" },
+  { id: "t11", name: "iOS Native (Swift)", category: "mobile", icon: "iOS", desc: "Native Apple iOS Apps" },
+  { id: "t12", name: "Android Native (Kotlin)", category: "mobile", icon: "Android", desc: "Native Android Performance" },
+  { id: "t13", name: "React Native", category: "mobile", icon: "RN", desc: "Cross-Platform iOS & Android" },
+  { id: "t14", name: "Flutter", category: "mobile", icon: "Flutter", desc: "High Performance Native UI" },
+  { id: "t15", name: "PostgreSQL", category: "cloud", icon: "Postgres", desc: "Relational Data Engine" },
+  { id: "t16", name: "MongoDB", category: "cloud", icon: "Mongo", desc: "NoSQL Document Store" },
+  { id: "t17", name: "Redis", category: "cloud", icon: "Redis", desc: "In-Memory Caching & Queues" },
+  { id: "t18", name: "AWS", category: "cloud", icon: "AWS", desc: "EC2, S3, Lambda, CloudFront" },
+  { id: "t19", name: "Docker", category: "cloud", icon: "Docker", desc: "Containerization & Ops" },
+  { id: "t20", name: "Kubernetes", category: "cloud", icon: "K8s", desc: "Orchestration & Auto-scaling" },
+  { id: "t21", name: "OpenAI / LLMs", category: "ai", icon: "OpenAI", desc: "Custom AI Agents & RAG" },
+  { id: "t22", name: "LangChain", category: "ai", icon: "LangChain", desc: "LLM Orchestration & Chains" }
+];
+
 export default function TechStackSection({ technologies = [] }) {
   const [activeCategory, setActiveCategory] = useState('all');
+
+  const techList = (technologies && technologies.length > 0) ? technologies : DEFAULT_TECHNOLOGIES;
 
   const categories = [
     { id: 'all', name: 'ALL STACK' },
@@ -307,8 +334,9 @@ export default function TechStackSection({ technologies = [] }) {
   ];
 
   const filteredTech = activeCategory === 'all'
-    ? technologies
-    : technologies.filter(item => item.category === activeCategory);
+    ? techList
+    : techList.filter(item => item.category === activeCategory);
+
 
   return (
     <section style={{ padding: '5.5rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)', overflow: 'hidden' }}>
@@ -320,92 +348,43 @@ export default function TechStackSection({ technologies = [] }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: EASE_CURVE }}
+            className="pill-glow-pulse"
             style={{
               display: 'inline-block',
-              padding: '0.4rem 1.2rem',
-              backgroundColor: 'var(--primary-light)',
-              color: 'var(--primary)',
+              padding: '0.45rem 1.3rem',
+              backgroundColor: 'rgba(56, 189, 248, 0.08)',
+              color: '#0284c7',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid var(--primary-border)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
             OUR TECH MATRIX & SKILLS
           </motion.div>
 
-          <h2
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
               color: 'var(--text-heading)',
-              lineHeight: '1.4',
+              lineHeight: '1.2',
               letterSpacing: '-0.03em',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '0.45em',
-              flexWrap: 'wrap',
+              marginBottom: '1rem',
+              textAlign: 'center',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            {/* 1. Word: Technologies (sits highest at -14px with wave lift) */}
-            <motion.span
-              initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: -14 }}
-              animate={{ y: [-14, -22, -14] }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 0
-              }}
-              style={{ display: 'inline-block' }}
-            >
-              Technologies
-            </motion.span>
-
-            {/* 2. Word: We (sits in middle at 0px with wave lift) */}
-            <motion.span
-              initial={{ opacity: 0, y: -15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              animate={{ y: [0, -8, 0] }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 0.3
-              }}
-              style={{ display: 'inline-block' }}
-            >
-              We
-            </motion.span>
-
-            {/* 3. Word: Master (sits lowest at +14px with wave lift) */}
-            <motion.span
-              initial={{ opacity: 0, y: 0 }}
-              whileInView={{ opacity: 1, y: 14 }}
-              animate={{ y: [14, 6, 14] }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 0.6
-              }}
-              className="text-gradient-cyan"
-              style={{ display: 'inline-block' }}
-            >
-              Master
-            </motion.span>
-          </h2>
+            Technologies We <span className="text-gradient-cyan-shimmer">Master</span>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

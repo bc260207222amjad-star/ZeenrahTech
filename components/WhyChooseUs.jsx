@@ -1,6 +1,9 @@
 'use client';
 
-import { Award, Zap, Cpu, ShieldCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Award, Zap, Cpu, ShieldCheck, Radio } from 'lucide-react';
+
+const EASE_CURVE = [0.22, 1, 0.36, 1];
 
 function getWhyUsIcon(item = {}, index = 0) {
   const iconStr = String(item.icon || '');
@@ -32,51 +35,74 @@ export default function WhyChooseUs({ whyUs = [] }) {
   const differentiators = whyUs;
 
   return (
-    <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: EASE_CURVE }}
+            className="pill-glow-pulse"
             style={{
               display: 'inline-block',
               padding: '0.45rem 1.3rem',
-              backgroundColor: 'var(--primary-light)',
-              color: 'var(--primary)',
+              backgroundColor: 'rgba(56, 189, 248, 0.08)',
+              color: '#0284c7',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid var(--primary-border)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
             WHY WORK WITH US
-          </div>
-          <h2
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
+            className="text-gradient-cyan-shimmer"
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
-              color: 'var(--text-heading)',
               lineHeight: '1.3',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            The Zeenrah Technologies <span className="text-gradient-cyan">Engineering Advantage</span>
-          </h2>
-          <p
-            style={{
-              fontSize: '1.1rem',
-              color: 'var(--text-body)',
-              lineHeight: '1.7',
-              maxWidth: '720px',
-              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-            }}
+            The Zeenrah Technologies Engineering Advantage
+          </motion.h2>
+
+          {/* News Channel Ticker Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: EASE_CURVE }}
+            className="news-ticker-container"
           >
-            We combine Silicon Valley product engineering rigor with transparent Agile delivery, clean code architectures, and strict enterprise security standards.
-          </p>
+            <div className="news-ticker-badge">
+              <Radio size={14} />
+              <span>LIVE TICKER</span>
+            </div>
+            <div className="news-ticker-track">
+              {[1, 2, 3, 4].map((_, idx) => (
+                <div key={idx} className="news-ticker-item">
+                  <span>
+                    We combine Silicon Valley product engineering rigor with transparent Agile delivery, clean code architectures, and strict enterprise security standards.
+                  </span>
+                  <span className="news-ticker-bullet">✦</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* 4 Differentiators Grid */}

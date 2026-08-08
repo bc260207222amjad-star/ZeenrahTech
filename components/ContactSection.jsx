@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone } from 'lucide-react';
+
+const EASE_CURVE = [0.22, 1, 0.36, 1];
 
 export default function ContactSection({ siteMeta = {}, faqs = [] }) {
   const meta = siteMeta;
@@ -64,41 +67,55 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
   };
 
   return (
-    <section style={{ position: 'relative', padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section style={{ position: 'relative', padding: '6rem 0', backgroundColor: 'var(--bg-base)', borderBottom: '1px solid var(--border-subtle)', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: EASE_CURVE }}
+            className="pill-glow-pulse"
             style={{
               display: 'inline-block',
               padding: '0.45rem 1.3rem',
-              backgroundColor: 'var(--primary-light)',
-              color: 'var(--primary)',
+              backgroundColor: 'rgba(56, 189, 248, 0.08)',
+              color: '#0284c7',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid var(--primary-border)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
             LET'S BUILD TOGETHER
-          </div>
-          <h2
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
+            className="text-gradient-cyan-shimmer"
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
               color: 'var(--text-heading)',
-              lineHeight: '1.2',
+              lineHeight: '1.25',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            Request a Free <span className="text-gradient-cyan">Project Estimation</span>
-          </h2>
-          <p
+            Request a Free Project Estimation
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: EASE_CURVE }}
             style={{
               fontSize: '1.1rem',
               color: 'var(--text-body)',
@@ -108,12 +125,21 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
             }}
           >
             Tell us about your project requirements, technology stack, and timeline. Our engineering leads will respond within 24 hours with a detailed technical roadmap.
-          </p>
+          </motion.p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3.5rem', alignItems: 'start' }}>
-          {/* Form Card */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: EASE_CURVE }}
+            whileHover={{
+              y: -4,
+              boxShadow: '0 20px 45px rgba(56, 189, 248, 0.12)',
+              borderColor: 'rgba(56, 189, 248, 0.4)',
+              transition: { duration: 0.3, ease: 'easeOut' }
+            }}
             style={{
               backgroundColor: 'var(--bg-card)',
               backdropFilter: 'blur(20px)',
@@ -121,7 +147,8 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
               borderRadius: '20px',
               padding: '3rem',
               border: '1px solid var(--border-card)',
-              boxShadow: 'var(--shadow-card)'
+              boxShadow: 'var(--shadow-card)',
+              transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
             }}
           >
             <form onSubmit={handleSubmit}>
@@ -149,7 +176,6 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                     }}
                   />
                 </div>
-
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
                     WORK EMAIL *
@@ -174,7 +200,6 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                   />
                 </div>
               </div>
-
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
@@ -198,7 +223,6 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                     }}
                   />
                 </div>
-
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
                     COMPANY NAME
@@ -222,7 +246,6 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                   />
                 </div>
               </div>
-
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
@@ -250,7 +273,6 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                     <option>Dedicated Developer Squads</option>
                   </select>
                 </div>
-
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
                     ESTIMATED BUDGET
@@ -277,7 +299,6 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                   </select>
                 </div>
               </div>
-
               <div style={{ marginBottom: '2rem' }}>
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>
                   PROJECT OVERVIEW & REQUIREMENTS
@@ -300,8 +321,9 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                   }}
                 />
               </div>
-
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02, boxShadow: '0 8px 25px rgba(56, 189, 248, 0.35)' }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
                 className="btn btn-primary"
@@ -327,73 +349,107 @@ export default function ContactSection({ siteMeta = {}, faqs = [] }) {
                 ) : (
                   <span>SUBMIT ESTIMATE REQUEST →</span>
                 )}
-              </button>
+              </motion.button>
             </form>
+          </motion.div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+            <motion.div
+              initial={{ opacity: 0, x: 35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.25, ease: EASE_CURVE }}
+              whileHover={{
+                x: 8,
+                scale: 1.015,
+                borderColor: 'rgba(56, 189, 248, 0.6)',
+                boxShadow: '0 14px 32px rgba(56, 189, 248, 0.16)',
+                transition: { duration: 0.3, ease: 'easeOut' }
+              }}
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                backdropFilter: 'blur(20px)',
+                borderRadius: '16px',
+                padding: '2rem',
+                border: '1px solid var(--border-card)',
+                borderLeft: '4px solid var(--primary)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+              }}
+            >
+              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <MapPin size={18} color="var(--primary)" />
+                <span>Global Headquarters</span>
+              </h4>
+              <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
+                {meta.address || 'Zeenrah Tech Hub Towers, Suite 400'}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: EASE_CURVE }}
+              whileHover={{
+                x: 8,
+                scale: 1.015,
+                borderColor: 'rgba(56, 189, 248, 0.6)',
+                boxShadow: '0 14px 32px rgba(56, 189, 248, 0.16)',
+                transition: { duration: 0.3, ease: 'easeOut' }
+              }}
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                backdropFilter: 'blur(20px)',
+                borderRadius: '16px',
+                padding: '2rem',
+                border: '1px solid var(--border-card)',
+                borderLeft: '4px solid var(--primary)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+              }}
+            >
+              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Mail size={18} color="var(--primary)" />
+                <span>Direct Engineering Email</span>
+              </h4>
+              <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
+                {targetEmail}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.45, ease: EASE_CURVE }}
+              whileHover={{
+                x: 8,
+                scale: 1.015,
+                borderColor: 'rgba(56, 189, 248, 0.6)',
+                boxShadow: '0 14px 32px rgba(56, 189, 248, 0.16)',
+                transition: { duration: 0.3, ease: 'easeOut' }
+              }}
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                backdropFilter: 'blur(20px)',
+                borderRadius: '16px',
+                padding: '2rem',
+                border: '1px solid var(--border-card)',
+                borderLeft: '4px solid var(--accent)',
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+              }}
+            >
+              <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Phone size={18} color="var(--accent)" />
+                <span>24/7 Client Helpline</span>
+              </h4>
+              <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
+                {meta.phone || '+1 (800) 555-ZEENRAH'}
+              </p>
+            </motion.div>
           </div>
-
-            {/* Right Contact Cards */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-              <div
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  backdropFilter: 'blur(20px)',
-                  borderRadius: '16px',
-                  padding: '2rem',
-                  border: '1px solid var(--border-card)',
-                  borderLeft: '4px solid var(--primary)'
-                }}
-              >
-                <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <MapPin size={18} color="var(--primary)" />
-                  <span>Global Headquarters</span>
-                </h4>
-                <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
-                  {meta.address || 'Zeenrah Tech Hub Towers, Suite 400'}
-                </p>
-              </div>
-
-              <div
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  backdropFilter: 'blur(20px)',
-                  borderRadius: '16px',
-                  padding: '2rem',
-                  border: '1px solid var(--border-card)',
-                  borderLeft: '4px solid var(--primary)'
-                }}
-              >
-                <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Mail size={18} color="var(--primary)" />
-                  <span>Direct Engineering Email</span>
-                </h4>
-                <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
-                  {targetEmail}
-                </p>
-              </div>
-
-              <div
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  backdropFilter: 'blur(20px)',
-                  borderRadius: '16px',
-                  padding: '2rem',
-                  border: '1px solid var(--border-card)',
-                  borderLeft: '4px solid var(--accent)'
-                }}
-              >
-                <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--text-heading)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Phone size={18} color="var(--accent)" />
-                  <span>24/7 Client Helpline</span>
-                </h4>
-                <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
-                  {meta.phone || '+1 (800) 555-ZEENRAH'}
-                </p>
-              </div>
-            </div>
         </div>
       </div>
 
-      {/* 🚀 STUNNING CUSTOM POP-UP SUCCESS MODAL */}
       {showModal && modalDetails && (
         <div
           style={{

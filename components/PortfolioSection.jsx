@@ -1,7 +1,10 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { Activity, ShieldCheck, Zap, Navigation, TrendingUp, Cpu, ShoppingBag, Radio } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Activity, ShieldCheck, Zap, Navigation, TrendingUp, Cpu, ShoppingBag, Radio } from 'lucide-react';
+
+const EASE_CURVE = [0.22, 1, 0.36, 1];
 
 function CaseStudyVisualizer({ item, index }) {
   const id = item.id || `p${index + 1}`;
@@ -161,7 +164,24 @@ export default function PortfolioSection({ portfolio = [] }) {
     if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
     resumeTimeout.current = setTimeout(() => {
       isInteracting.current = false;
-    }, 1200); // Resume auto-scroll 1.2s after interaction stops
+    }, 1500); // Resume auto-scroll 1.5s after interaction stops
+  };
+
+  // Manual Scroll Navigation
+  const handleScrollLeft = () => {
+    if (scrollRef.current) {
+      handleUserInteractionStart();
+      scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      handleUserInteractionEnd();
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (scrollRef.current) {
+      handleUserInteractionStart();
+      scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      handleUserInteractionEnd();
+    }
   };
 
   // Mouse Drag Handlers
@@ -219,58 +239,133 @@ export default function PortfolioSection({ portfolio = [] }) {
   }, []);
 
   return (
-    <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-alt)', borderBottom: '1px solid var(--border-subtle)' }}>
+    <section style={{ padding: '6rem 0', backgroundColor: 'var(--bg-alt)', borderBottom: '1px solid var(--border-subtle)', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+        {/* Section Header with Staggered Entrance & Interactive Navigation */}
         <div style={{ textAlign: 'center', marginBottom: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: EASE_CURVE }}
+            className="pill-glow-pulse"
             style={{
               display: 'inline-block',
               padding: '0.45rem 1.3rem',
-              backgroundColor: 'var(--primary-light)',
-              color: 'var(--primary)',
+              backgroundColor: 'rgba(56, 189, 248, 0.08)',
+              color: '#0284c7',
               fontWeight: '800',
               fontSize: '0.85rem',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',
               borderRadius: '50px',
               marginBottom: '1rem',
-              border: '1px solid var(--primary-border)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
+              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
             FEATURED CASE STUDIES
-          </div>
-          <h2
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
+            className="text-gradient-cyan-shimmer"
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
-              color: 'var(--text-heading)',
-              lineHeight: '1.2',
+              lineHeight: '1.25',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
+              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            Engineered for <span className="text-gradient-cyan">High Scale & Latency</span>
-          </h2>
-          <p
+            Engineered for High Scale & Latency
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: EASE_CURVE }}
             style={{
               fontSize: '1.1rem',
               color: 'var(--text-body)',
               lineHeight: '1.65',
               maxWidth: '720px',
+              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
             Explore how we partnered with global Fintech, HealthTech, E-Commerce, and Logistics leaders to deliver high-impact software products.
-          </p>
+          </motion.p>
+
+          {/* Interactive Glassmorphic Carousel Control Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: EASE_CURVE }}
+            style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem' }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(56, 189, 248, 0.15)', borderColor: '#38bdf8' }}
+              whileTap={{ scale: 0.92 }}
+              onClick={handleScrollLeft}
+              style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '50%',
+                border: '1px solid var(--border-subtle)',
+                backgroundColor: 'var(--bg-card)',
+                color: 'var(--text-heading)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: 'var(--shadow-card)',
+                transition: 'all 0.2s ease'
+              }}
+              aria-label="Scroll left"
+            >
+              <ChevronLeft size={22} />
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(56, 189, 248, 0.15)', borderColor: '#38bdf8' }}
+              whileTap={{ scale: 0.92 }}
+              onClick={handleScrollRight}
+              style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '50%',
+                border: '1px solid var(--border-subtle)',
+                backgroundColor: 'var(--bg-card)',
+                color: 'var(--text-heading)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: 'var(--shadow-card)',
+                transition: 'all 0.2s ease'
+              }}
+              aria-label="Scroll right"
+            >
+              <ChevronRight size={22} />
+            </motion.button>
+          </motion.div>
         </div>
       </div>
 
-      {/* Infinite Seamless Auto-Scrolling Carousel with Drag & Touch Support */}
+      {/* Infinite Seamless Auto-Scrolling Carousel with Interactive Hover & Drag */}
       <div
         ref={scrollRef}
+        onMouseEnter={handleUserInteractionStart}
+        onMouseLeave={handleMouseUp}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
         onTouchStart={handleUserInteractionStart}
         onTouchEnd={handleUserInteractionEnd}
         onWheel={handleUserInteractionStart}
@@ -279,7 +374,8 @@ export default function PortfolioSection({ portfolio = [] }) {
           gap: '1.5rem',
           overflowX: 'auto',
           scrollBehavior: 'auto',
-          padding: '0 2rem 1.5rem 2rem',
+          padding: '1.75rem 2rem 2.25rem 2rem',
+          margin: '-0.75rem 0 0 0',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
           cursor: 'grab',
@@ -288,8 +384,19 @@ export default function PortfolioSection({ portfolio = [] }) {
         }}
       >
         {items.map((item, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5, delay: (index % 4) * 0.08, ease: EASE_CURVE }}
+            whileHover={{
+              y: -8,
+              scale: 1.015,
+              borderColor: 'rgba(56, 189, 248, 0.55)',
+              boxShadow: '0 22px 45px rgba(56, 189, 248, 0.18)',
+              transition: { duration: 0.3, ease: 'easeOut' }
+            }}
             style={{
               minWidth: '380px',
               maxWidth: '380px',
@@ -303,7 +410,7 @@ export default function PortfolioSection({ portfolio = [] }) {
               display: 'flex',
               flexDirection: 'column',
               flexShrink: 0,
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
             }}
           >
             {/* Interactive Vector UI Visualizer Container */}
@@ -376,7 +483,7 @@ export default function PortfolioSection({ portfolio = [] }) {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

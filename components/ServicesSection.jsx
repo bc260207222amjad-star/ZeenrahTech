@@ -55,22 +55,24 @@ export default function ServicesSection({ services = [] }) {
             OUR CORE CAPABILITIES
           </motion.div>
 
+          {/* Smooth Shimmering Sentence Heading */}
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.15, ease: EASE_CURVE }}
+            className="text-gradient-cyan-shimmer"
             style={{
               fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
               fontWeight: '900',
-              color: 'var(--text-heading)',
-              lineHeight: '1.2',
+              lineHeight: '1.25',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
+              textAlign: 'center',
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
             }}
           >
-            Enterprise Software Engineering & <span className="text-gradient-cyan">AI Solutions</span>
+            Enterprise Software Engineering & AI Solutions
           </motion.h2>
 
           <motion.p
