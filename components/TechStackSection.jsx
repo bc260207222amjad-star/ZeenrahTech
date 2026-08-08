@@ -443,11 +443,12 @@ export default function TechStackSection({ technologies = [] }) {
               }
             }}
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 240px))',
+              display: 'flex',
               justifyContent: 'center',
-              gap: '1.5rem',
-              minHeight: '280px'
+              alignItems: 'center',
+              gap: '1.25rem',
+              flexWrap: 'wrap',
+              minHeight: '220px'
             }}
           >
             {filteredTech.map((tech, index) => (
@@ -473,8 +474,11 @@ export default function TechStackSection({ technologies = [] }) {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
+                  justifyContent: 'center',
                   textAlign: 'center',
-                  padding: '1.75rem 1.25rem',
+                  width: '215px',
+                  height: '190px',
+                  padding: '1.25rem 1rem',
                   backgroundColor: 'var(--bg-card)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
@@ -482,8 +486,6 @@ export default function TechStackSection({ technologies = [] }) {
                   borderBottom: '3px solid var(--primary)',
                   borderRadius: '16px',
                   boxShadow: 'var(--shadow-card)',
-                  width: '100%',
-                  height: '100%',
                   boxSizing: 'border-box',
                   cursor: 'pointer'
                 }}
