@@ -43,15 +43,16 @@ const EndlessTypewriter = memo(function EndlessTypewriter({ phrases = ["Leading 
   }, [text, isDeleting, phraseIdx, phrases]);
 
   return (
-    <span style={{ display: 'inline-flex', alignItems: 'center', minHeight: '1.1em', verticalAlign: 'middle' }}>
+    <span style={{ display: 'inline-block', verticalAlign: 'baseline' }}>
       <span>{text}</span>
       <span
         style={{
           display: 'inline-block',
-          width: '4px',
-          height: '0.85em',
+          width: '3px',
+          height: '0.75em',
           backgroundColor: '#38BDF8',
           marginLeft: '4px',
+          verticalAlign: 'baseline',
           animation: 'blink 0.8s infinite',
           borderRadius: '2px',
           boxShadow: '0 0 10px #38BDF8'
