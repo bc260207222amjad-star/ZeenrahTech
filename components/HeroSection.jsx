@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, ShieldCheck, Zap, Layers } from 'lucide-react';
@@ -7,6 +8,58 @@ import IosDevVideoBackground from './IosDevVideoBackground';
 
 // Custom corporate smooth easing curve requested by user
 const EASE_CURVE = [0.22, 1, 0.36, 1];
+
+function EndlessTypewriter({ phrases = ["Leading App", "Enterprise AI", "Mobile Platform", "Cloud Software"] }) {
+  const [text, setText] = useState('');
+  const [phraseIdx, setPhraseIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = phrases[phraseIdx % phrases.length];
+    let timer;
+
+    if (!isDeleting && text.length < currentPhrase.length) {
+      // Type letter by letter: L -> Le -> Lea -> Lead -> Leadi -> Leadin -> Leading -> Leading A -> Leading Ap -> Leading App
+      timer = setTimeout(() => {
+        setText(currentPhrase.substring(0, text.length + 1));
+      }, 120);
+    } else if (!isDeleting && text.length === currentPhrase.length) {
+      // Pause at full word before deleting
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+    } else if (isDeleting && text.length > 0) {
+      // Backspace character smoothly
+      timer = setTimeout(() => {
+        setText(currentPhrase.substring(0, text.length - 1));
+      }, 65);
+    } else if (isDeleting && text.length === 0) {
+      // Switch phrase and loop indefinitely
+      setIsDeleting(false);
+      setPhraseIdx((prev) => (prev + 1) % phrases.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, phraseIdx, phrases]);
+
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <span>{text}</span>
+      <span
+        style={{
+          display: 'inline-block',
+          width: '4px',
+          height: '0.85em',
+          backgroundColor: '#38BDF8',
+          marginLeft: '4px',
+          animation: 'blink 0.8s infinite',
+          borderRadius: '2px',
+          boxShadow: '0 0 10px #38BDF8'
+        }}
+      />
+    </span>
+  );
+}
 
 export default function HeroSection({ hero }) {
   return (
@@ -58,7 +111,7 @@ export default function HeroSection({ hero }) {
           </span>
         </motion.div>
 
-        {/* 2. Main Headline (0.25s delay, translateY 30px -> 0) */}
+        {/* 2. Main Headline with Endless Typewriter Transition for "Leading App" */}
         <h1
           style={{
             fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
@@ -76,8 +129,7 @@ export default function HeroSection({ hero }) {
             transition={{ duration: 0.7, delay: 0.25, ease: EASE_CURVE }}
             style={{ display: 'block' }}
           >
-            {hero?.headlineMain || 'Global Leading'}{' '}
-            <span>{hero?.headlineSub || 'App Factory'}</span>
+            Global <EndlessTypewriter phrases={["Leading App", "Enterprise AI", "Mobile Platform", "Cloud Suite"]} />
           </motion.span>
 
           {/* 3. Highlighted Accent Text (0.4s delay, translateY 25px -> 0) */}
